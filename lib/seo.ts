@@ -44,6 +44,6 @@ export function pageMetadata({
   };
 }
 
-export const HOME_TITLE = `Twitter Thread Generator — Turn Blog Posts into X Threads (${CURRENT_YEAR})`;
+export const HOME_TITLE = `Twitter Thread Generator — Blog to X Threads (${CURRENT_YEAR})`;
 export const HOME_DESCRIPTION =
   "Convert any blog post into an engaging Twitter/X thread with AI. Paste your article URL or text, get a ready-to-post thread instantly. No sign-up required.";
