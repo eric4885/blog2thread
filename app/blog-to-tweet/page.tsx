@@ -4,13 +4,15 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { ThreadGenerator } from "@/components/thread-generator";
 import { SITE_URL } from "@/lib/site";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Blog to Tweet Converter — Turn Articles into Viral Tweets Free",
   description:
     "Turn any blog post into a single powerful tweet with AI. Copy-paste your article URL and get a tweet-ready summary in seconds.",
-  alternates: { canonical: "/blog-to-tweet" }
-};
+  path: "/blog-to-tweet/",
+  ogTitle: "Blog to Tweet Converter — Turn Articles into Viral Tweets Free"
+});
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -18,10 +20,9 @@ const jsonLd = {
   name: "Blog to Tweet Converter",
   applicationCategory: "WebApplication",
   operatingSystem: "Web",
-  description:
-    "Turn any blog post into a single powerful tweet with AI.",
+  description: "Turn any blog post into a single powerful tweet with AI.",
   offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-  url: `${SITE_URL}/blog-to-tweet`
+  url: `${SITE_URL}/blog-to-tweet/`
 };
 
 export default function BlogToTweetPage() {

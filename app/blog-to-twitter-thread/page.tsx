@@ -4,13 +4,14 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { ThreadGenerator } from "@/components/thread-generator";
 import { SITE_URL } from "@/lib/site";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Blog to Twitter Thread Converter — Free AI Tool",
   description:
     "Convert any blog post into a Twitter/X thread with Blog2Thread. Paste your URL or text and get a ready-to-post thread in seconds.",
-  alternates: { canonical: "/blog-to-twitter-thread" }
-};
+  path: "/blog-to-twitter-thread/"
+});
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -20,7 +21,7 @@ const jsonLd = {
   operatingSystem: "Web",
   description: "Convert any blog post into a Twitter/X thread with AI.",
   offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-  url: `${SITE_URL}/blog-to-twitter-thread`
+  url: `${SITE_URL}/blog-to-twitter-thread/`
 };
 
 export default function BlogToTwitterThreadPage() {

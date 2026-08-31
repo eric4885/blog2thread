@@ -4,13 +4,14 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { ThreadGenerator } from "@/components/thread-generator";
 import { SITE_URL } from "@/lib/site";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Twitter Thread to PDF — Save Your Thread as PDF",
   description:
     "Export your Twitter/X thread to PDF or Markdown with Blog2Thread. Generate a thread, then save it for archives, clients, and content calendars.",
-  alternates: { canonical: "/tools/thread-to-pdf" }
-};
+  path: "/tools/thread-to-pdf/"
+});
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -20,7 +21,7 @@ const jsonLd = {
   operatingSystem: "Web",
   description: "Save your generated Twitter/X thread as PDF or Markdown.",
   offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-  url: `${SITE_URL}/tools/thread-to-pdf`
+  url: `${SITE_URL}/tools/thread-to-pdf/`
 };
 
 export default function ThreadToPdfPage() {

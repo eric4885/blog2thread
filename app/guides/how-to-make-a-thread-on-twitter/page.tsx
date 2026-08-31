@@ -4,13 +4,14 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { ThreadGenerator } from "@/components/thread-generator";
 import { CURRENT_YEAR, SITE_URL } from "@/lib/site";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: `How to Make a Thread on Twitter: Complete Guide (${CURRENT_YEAR})`,
   description:
     "Learn how to create engaging Twitter/X threads that get engagement. Step-by-step guide with tips, examples, and a free AI thread generator.",
-  alternates: { canonical: "/guides/how-to-make-a-thread-on-twitter" }
-};
+  path: "/guides/how-to-make-a-thread-on-twitter/"
+});
 
 const howToJsonLd = {
   "@context": "https://schema.org",

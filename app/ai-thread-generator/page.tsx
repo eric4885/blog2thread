@@ -4,13 +4,14 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { ThreadGenerator } from "@/components/thread-generator";
 import { CURRENT_YEAR, SITE_URL } from "@/lib/site";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: `AI Thread Generator — Create Twitter/X Threads from Any Topic (${CURRENT_YEAR})`,
   description:
     "Generate engaging Twitter threads from any topic with AI. Just enter your topic, get 5-15 tweets ready to post. Free, no login.",
-  alternates: { canonical: "/ai-thread-generator" }
-};
+  path: "/ai-thread-generator/"
+});
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -20,7 +21,7 @@ const jsonLd = {
   operatingSystem: "Web",
   description: "Generate engaging Twitter/X threads from any topic with AI.",
   offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-  url: `${SITE_URL}/ai-thread-generator`
+  url: `${SITE_URL}/ai-thread-generator/`
 };
 
 export default function AiThreadGeneratorPage() {
