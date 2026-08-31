@@ -9,7 +9,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/ai-thread-generator/",
     "/blog-to-twitter-thread/",
     "/tools/thread-to-pdf/",
-    "/guides/how-to-make-a-thread-on-twitter/"
+    "/guides/how-to-make-a-thread-on-twitter/",
+    "/about/",
+    "/privacy/",
+    "/terms/"
   ];
 
   return routes.map((route) => ({
@@ -17,6 +20,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: now,
     changeFrequency:
       route === "/" || route.includes("guides") ? "weekly" : "monthly",
-    priority: route === "/" ? 1 : route.includes("guides") ? 0.9 : 0.8
+    priority:
+      route === "/"
+        ? 1
+        : route.includes("guides")
+          ? 0.9
+          : route === "/privacy/" || route === "/terms/" || route === "/about/"
+            ? 0.3
+            : 0.8
   }));
 }
