@@ -48,8 +48,8 @@ In Cloudflare → Workers → blog2thread → Settings → Build:
 | Field | Value |
 |------|--------|
 | Build command | `npx opennextjs-cloudflare build` |
-| Deploy command | `npx opennextjs-cloudflare deploy` |
-| Non-production deploy | `npx opennextjs-cloudflare upload` |
+| Deploy command | `npx opennextjs-cloudflare deploy -- --keep-vars` |
+| Non-production deploy | `npx opennextjs-cloudflare upload -- --keep-vars` |
 
 **Do not** use plain `npm run build` + `npx wrangler deploy` alone.
 
