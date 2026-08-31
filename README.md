@@ -6,38 +6,70 @@ Free AI Twitter/X thread generator — turn blog posts into ready-to-post thread
 
 - Next.js 15 (App Router)
 - TypeScript + Tailwind CSS
-- OpenAI-compatible Chat Completions API
+- OpenAI-compatible API via APIMart
+- Cloudflare Workers via `@opennextjs/cloudflare`
 
 ## Setup
 
 ```bash
 npm install
 cp .env.example .env.local
-# set OPENAI_API_KEY=...
+# set OPENAI_API_KEY + OPENAI_BASE_URL
 npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000).
 
-Optional:
+```bash
+OPENAI_API_KEY=your_apimart_key
+OPENAI_BASE_URL=https://api.apimart.ai/v1
+OPENAI_MODEL=gpt-4o-mini
+```
+
+## Cloudflare Workers (OpenNext)
+
+### Local Workers preview
 
 ```bash
-OPENAI_BASE_URL=https://api.openai.com
-OPENAI_MODEL=gpt-4.1-mini
-HTTPS_PROXY=http://127.0.0.1:7890
+npm run preview
 ```
+
+### Deploy from CLI
+
+```bash
+npx wrangler login
+npm run deploy
+```
+
+### Workers Builds (GitHub connected)
+
+In Cloudflare → Workers → blog2thread → Settings → Build:
+
+| Field | Value |
+|------|--------|
+| Build command | `npx opennextjs-cloudflare build` |
+| Deploy command | `npx opennextjs-cloudflare deploy` |
+| Non-production deploy | `npx opennextjs-cloudflare upload` |
+
+**Do not** use plain `npm run build` + `npx wrangler deploy` alone.
+
+### Production secrets / env vars
+
+In Cloudflare Worker settings → Variables and Secrets, add:
+
+- `OPENAI_API_KEY`
+- `OPENAI_BASE_URL` = `https://api.apimart.ai/v1`
+- `OPENAI_MODEL` = `gpt-4o-mini` (optional)
+
+Do **not** set `HTTPS_PROXY` on Cloudflare (local-only).
 
 ## Pages
 
 | Path | Purpose |
 |------|---------|
-| `/` | Twitter Thread Generator (homepage) |
+| `/` | Twitter Thread Generator |
 | `/blog-to-tweet` | Single tweet from blog |
 | `/ai-thread-generator` | Thread from topic |
 | `/blog-to-twitter-thread` | Brand exact-match page |
-| `/tools/thread-to-pdf` | PDF/Markdown export explainer |
-| `/guides/how-to-make-a-thread-on-twitter` | Content SEO guide |
-
-## Deploy
-
-Deploy to Vercel/Cloudflare. Set `OPENAI_API_KEY` in project env. Point `blog2thread.com` DNS to the host, then submit `https://blog2thread.com/sitemap.xml` in Google Search Console.
+| `/tools/thread-to-pdf` | PDF/Markdown export |
+| `/guides/how-to-make-a-thread-on-twitter` | SEO guide |
