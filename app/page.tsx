@@ -115,6 +115,33 @@ export default function HomePage() {
           <ThreadGenerator showUrlInput />
         </div>
 
+        <section className="mt-14">
+          <h2 className="font-display text-2xl font-semibold text-ink">
+            Example: Blog Post → Ready-to-Post Thread
+          </h2>
+          <p className="mt-3 max-w-3xl text-sm leading-6 text-ink/70 md:text-base">
+            Here is the kind of draft Blog2Thread produces from a founder essay
+            about shipping weekly. Edit the hook, keep the spine, post.
+          </p>
+          <div className="mt-5 space-y-3 rounded-2xl border border-line bg-white/90 p-5 shadow-panel md:p-6">
+            {[
+              "1/ I shipped every week for 12 weeks. Revenue didn’t jump on day one — consistency did. Here’s the thread I’d send my past self 🧵",
+              "2/ Most founders wait for a “perfect” launch post. We treated every Friday as a mini-launch: what shipped, what broke, what we’d do again.",
+              "3/ The blog held the full story (screenshots, metrics, dead ends). The X thread only kept the spine: claim → proof → lesson → CTA.",
+              "4/ Hook formula that worked: specific result + time box + promise of a playbook. Vague “lessons from building” posts died in the feed.",
+              "5/ One idea per tweet. If a sentence needed “and also,” it became the next tweet. Readers skim; writers over-explain.",
+              "6/ Final tweet: link back to the full post for the deep version — after the thread already delivered value. Want the template? Try Blog2Thread free."
+            ].map((line) => (
+              <article
+                key={line}
+                className="rounded-xl border border-line bg-mist/70 px-4 py-3 text-sm leading-6 text-ink"
+              >
+                {line}
+              </article>
+            ))}
+          </div>
+        </section>
+
         <section className="mt-14 grid gap-10 md:grid-cols-2">
           <div>
             <h2 className="font-display text-2xl font-semibold text-ink">
@@ -161,23 +188,19 @@ export default function HomePage() {
             into platform-native posts. Here is how teams use Blog2Thread in
             practice.
           </p>
-          <div className="mt-5 grid gap-4 md:grid-cols-2">
+          <div className="mt-5 grid gap-4 md:grid-cols-1">
             {[
               {
-                h: "Indie founders & builders",
-                p: "Ship a product update or build-in-public essay, then convert it into a founder-voice thread the same day. Keep the proof points, cut the SEO padding, and drive replies back to the launch post."
+                h: "Founder launch & build-in-public",
+                p: "You just published a shipping update or launch essay. Instead of spending an hour rewriting it for X, paste the URL into Blog2Thread, keep the metrics and lessons, and post a founder-voice thread the same day. The blog remains the source of truth; the thread becomes the distribution layer that earns replies and profile visits."
               },
               {
-                h: "Content marketers",
-                p: "Every SEO article deserves more than one share. Use this AI thread creator to extract the claim, examples, and CTA so your blog keeps earning attention on X without a rewrite marathon."
+                h: "Marketer distribution engine",
+                p: "SEO teams already invest in long articles. Use this AI thread creator to extract the claim, examples, and CTA so every post gets a native X narrative—not a truncated meta description. Schedule the thread when the article goes live, then reuse a second angle a week later from the same source."
               },
               {
-                h: "Personal brands & creators",
-                p: "Newsletters and deep notes rarely travel as links alone. Turn them into a scannable thread writing workflow — hook first, one insight per tweet — so your audience can bookmark the short version."
-              },
-              {
-                h: "Product launches & announcements",
-                p: "Launch posts need narrative, not a feature dump. Generate a thread outline from your changelog or landing-page copy, then tighten the first tweet before you schedule."
+                h: "Creator monetization & audience growth",
+                p: "Newsletters and deep notes rarely travel as bare links. Turn them into a scannable thread writing workflow: hook first, one insight per tweet, CTA to subscribe or buy. Creators keep ownership of the long-form piece while X carries the discovery loop."
               }
             ].map((item) => (
               <div
@@ -188,6 +211,57 @@ export default function HomePage() {
                 <p className="mt-2 text-sm leading-6 text-ink/70">{item.p}</p>
               </div>
             ))}
+          </div>
+        </section>
+
+        <section className="mt-14">
+          <h2 className="font-display text-2xl font-semibold text-ink">
+            Blog2Thread vs Manual Writing vs ChatGPT
+          </h2>
+          <p className="mt-3 max-w-3xl text-sm leading-6 text-ink/70 md:text-base">
+            Same goal—turn a blog into an X thread—three different workflows.
+          </p>
+          <div className="mt-5 overflow-x-auto rounded-2xl border border-line bg-white/90">
+            <table className="min-w-full text-left text-sm text-ink/80">
+              <thead className="bg-mist/80 text-ink">
+                <tr>
+                  <th className="px-4 py-3 font-semibold">Approach</th>
+                  <th className="px-4 py-3 font-semibold">Time</th>
+                  <th className="px-4 py-3 font-semibold">Quality control</th>
+                  <th className="px-4 py-3 font-semibold">Best for</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  [
+                    "Manual rewrite",
+                    "45–90 min",
+                    "Highest voice match, easy to stall",
+                    "Flagship posts only"
+                  ],
+                  [
+                    "Raw ChatGPT prompt",
+                    "10–20 min",
+                    "Flexible but often generic; you still format tweets",
+                    "One-off drafts"
+                  ],
+                  [
+                    "Blog2Thread",
+                    "Under 2 min",
+                    "URL/text in → numbered thread out; you edit the hook",
+                    "Weekly distribution"
+                  ]
+                ].map((row) => (
+                  <tr key={row[0]} className="border-t border-line">
+                    {row.map((cell) => (
+                      <td key={cell} className="px-4 py-3 align-top">
+                        {cell}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </section>
 
