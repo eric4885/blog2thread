@@ -1,11 +1,9 @@
 import { Outfit, Source_Serif_4 } from "next/font/google";
 import type { Metadata } from "next";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
-import { SITE_NAME, SITE_URL } from "@/lib/site";
+import { GA_MEASUREMENT_ID, SITE_NAME, SITE_URL } from "@/lib/site";
 import { HOME_DESCRIPTION, HOME_TITLE } from "@/lib/seo";
 import "./globals.css";
-
-const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim();
 
 const sans = Outfit({
   subsets: ["latin"],
