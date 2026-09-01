@@ -1,30 +1,23 @@
 # Cloudflare AI Crawl / GEO checklist (blog2thread.com)
 
-Cloudflare **prepends** managed robots rules. Editing only `app/robots.ts` is not enough.
+Site `robots.txt` lives at `public/robots.txt` (includes Content-Signal).  
+**Keep Cloudflare「托管 robots.txt」OFF** — when ON, CF prepends Disallow for GPTBot/ClaudeBot/CCBot and kills GEO.
 
 ## Goal
 
-- Keep **Content-Signal**: `search=yes`, `ai-train=no` (or Training = Disallow / no-train)
-- **Allow** crawlers used for AI search & citation (GEO)
-- Optionally keep blocking pure scrapers (Amazonbot, meta-externalagent)
+- **Content-Signal**: `search=yes, ai-train=no, use=reference`
+- **Allow** AI search / citation crawlers (GEO)
+- Optionally block Amazonbot / meta-externalagent
 
-## Dashboard steps
+## Dashboard
 
-1. Cloudflare → **网站** → `blog2thread.com`
-2. Open **AI Crawl Control** (or **AI / Bot** related settings; name may vary by plan)
-3. Per crawler, set **Allow** for at least:
-   - OAI-SearchBot, ChatGPT-User, GPTBot
-   - ClaudeBot, Claude-SearchBot, Claude-User
-   - PerplexityBot, Perplexity-User
-   - CCBot (Common Crawl — used by many AI indexes)
-   - Applebot-Extended, Bytespider (if listed)
-4. Training-only preference: keep **ai-train = no** / Training disallow where the UI separates Search vs Training
-5. Save, then open https://blog2thread.com/robots.txt
-6. Confirm those bots are **not** `Disallow: /` in the Cloudflare Managed block
-7. In GSC, re-fetch robots.txt / wait for recrawl
+1. AI Crawl Control → Overview → **托管 robots.txt** = **OFF**
+2. Security crawler list: do **not** hard-block GPTBot / ClaudeBot / CCBot / PerplexityBot / Applebot-Extended / Bytespider
+3. Open https://blog2thread.com/robots.txt — no `# BEGIN Cloudflare Managed content`
+4. GSC: re-fetch robots.txt
 
 ## Verify
 
 ```bash
-curl -s https://blog2thread.com/robots.txt | findstr /i "GPTBot ClaudeBot CCBot Disallow Allow"
+curl -s https://blog2thread.com/robots.txt | findstr /i "Content-Signal GPTBot ClaudeBot CCBot Disallow Allow"
 ```
