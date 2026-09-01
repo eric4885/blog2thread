@@ -1,8 +1,11 @@
 import { Outfit, Source_Serif_4 } from "next/font/google";
 import type { Metadata } from "next";
+import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 import { HOME_DESCRIPTION, HOME_TITLE } from "@/lib/seo";
 import "./globals.css";
+
+const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim();
 
 const sans = Outfit({
   subsets: ["latin"],
@@ -58,7 +61,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${sans.variable} ${display.variable}`}>
-      <body className="font-sans antialiased">{children}</body>
+      <body className="font-sans antialiased">
+        {GA_MEASUREMENT_ID ? (
+          <GoogleAnalytics measurementId={GA_MEASUREMENT_ID} />
+        ) : null}
+        {children}
+      </body>
     </html>
   );
 }

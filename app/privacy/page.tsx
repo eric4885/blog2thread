@@ -42,9 +42,10 @@ export default function PrivacyPage() {
           </p>
           <h2>Cookies and analytics</h2>
           <p>
-            We may use essential cookies or privacy-friendly analytics in the
-            future to understand traffic. We will update this page if we add
-            tracking that identifies individual users.
+            We may use Google Analytics 4 (GA4) to understand aggregate traffic
+            (pages viewed, approximate location, device). GA4 uses cookies or
+            similar identifiers. We do not use analytics to sell personal data.
+            You can block analytics cookies in your browser if you prefer.
           </p>
           <h2>Third-party processors</h2>
           <p>
