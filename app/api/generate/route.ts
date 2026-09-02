@@ -17,7 +17,7 @@ Goal: Turn the source into ONE viral-ready English tweet.
 
 Hard requirements:
 - Output exactly one tweet.
-- Keep it under 260 characters.
+- Keep it under 280 characters.
 - Strong hook, concrete payoff, no hashtag spam.
 - Translate non-English input naturally into English.
 - Output only the tweet text. No quotes, labels, or explanations.
@@ -31,7 +31,7 @@ Goal: Create a high-engagement English Twitter/X thread from a topic or brief id
 
 Hard requirements:
 - Write 5 to 15 tweets.
-- Keep each tweet under 260 characters.
+- Keep each tweet under 280 characters.
 - Prefix each tweet with numbering like 1/, 2/, 3/...
 - Tweet 1 must be a scroll-stopping hook.
 - Make middle tweets scannable and specific.
@@ -47,7 +47,7 @@ Goal: Convert long-form input (blog post, article, newsletter) into a high-quali
 Hard requirements:
 - Write for English Twitter/X readers (translate non-English input naturally).
 - Keep total length between 8 and 15 tweets.
-- Keep each tweet under 260 characters.
+- Keep each tweet under 280 characters.
 - Prefix each tweet with numbering like 1/, 2/, 3/...
 - Make tweet 1 a strong hook (question, contrast, or result-first framing).
 - Keep middle tweets scannable with short lines and clean structure.
@@ -95,10 +95,16 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  const body = (await req.json()) as {
+  let body: {
     content?: string;
     mode?: GenerateMode;
   };
+  try {
+    body = await req.json();
+  } catch {
+    return NextResponse.json({ error: "Invalid request." }, { status: 400 });
+  }
+
   const mode: GenerateMode =
     body.mode === "tweet" || body.mode === "topic" ? body.mode : "thread";
   const content = body.content?.trim() || "";
@@ -178,7 +184,7 @@ export async function POST(req: NextRequest) {
 
     if (!thread) {
       return NextResponse.json(
-        { error: "The model returned an empty response. Please try again." },
+        { error: "Generation failed. Please try again." },
         { status: 500 }
       );
     }
@@ -187,26 +193,23 @@ export async function POST(req: NextRequest) {
   } catch (error: unknown) {
     if (axios.isAxiosError(error) && error.response) {
       const status = error.response.status;
-      console.error("OpenAI error", status, error.response.data);
+      console.error("generation provider error", status, error.response.data);
       return NextResponse.json(
         {
           error:
             status === 401
-              ? "OpenAI authentication failed. Please verify OPENAI_API_KEY and billing."
+              ? "Generation failed. Please try again later."
               : status === 429
-                ? "Too many requests or quota exceeded. Please try again shortly."
-                : "Failed to generate. Please try again."
+                ? "Too many requests. Please try again shortly."
+                : "Generation failed. Please try again."
         },
-        { status }
+        { status: status === 401 ? 502 : status }
       );
     }
 
-    console.error("OpenAI fetch failed", error);
+    console.error("generation fetch failed", error);
     return NextResponse.json(
-      {
-        error:
-          "Service temporarily unavailable. Check network/proxy settings or OPENAI_BASE_URL."
-      },
+      { error: "Generation failed. Please try again." },
       { status: 500 }
     );
   }

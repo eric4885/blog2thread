@@ -9,7 +9,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata: Metadata = pageMetadata({
   title: "Twitter Thread to PDF — Save Your Thread as PDF",
   description:
-    "Export your Twitter/X thread to PDF or Markdown with Blog2Thread. Generate a thread, then save it for archives, clients, and content calendars.",
+    "Save a thread you generate with Blog2Thread as PDF or Markdown. Generate first, then export — no scraping other people’s X threads.",
   path: "/tools/thread-to-pdf/"
 });
 
@@ -38,9 +38,10 @@ export default function ThreadToPdfPage() {
             Twitter Thread to PDF — Save Your Thread as PDF
           </h1>
           <p className="mt-4 text-base leading-7 text-ink/70">
-            Generate a thread with Blog2Thread, then export it as PDF or
-            Markdown in one click. Perfect for archives, client deliverables,
-            and content calendars — no X scraping required.
+            Generate a thread with Blog2Thread first, then export it as PDF or
+            Markdown in one click. This is not a scraper for other people’s X
+            threads — you create the draft here, then save it for archives,
+            clients, and content calendars.
           </p>
         </section>
 

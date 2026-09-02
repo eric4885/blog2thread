@@ -5,7 +5,7 @@ import { SiteHeader } from "@/components/site-header";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "About Blog2Thread",
+  title: "About",
   description:
     "Learn what Blog2Thread is: a free AI tool that turns blog posts into ready-to-post Twitter/X threads.",
   path: "/about/"

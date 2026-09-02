@@ -1,7 +1,10 @@
 "use client";
 
-import { useState, useTransition } from "react";
-import { downloadMarkdown, downloadPdf, splitThreadLines } from "@/lib/export";
+import Link from "next/link";
+import { useMemo, useState, useTransition } from "react";
+import { EmailCapture } from "@/components/email-capture";
+import { ThreadActions } from "@/components/thread-actions";
+import { splitThreadLines } from "@/lib/export";
 
 export type GeneratorMode = "thread" | "tweet" | "topic";
 
@@ -28,10 +31,16 @@ export function ThreadGenerator({
   const [content, setContent] = useState("");
   const [url, setUrl] = useState("");
   const [thread, setThread] = useState("");
+  const [shareUrl, setShareUrl] = useState("");
   const [error, setError] = useState("");
-  const [copied, setCopied] = useState(false);
   const [isPending, startTransition] = useTransition();
   const [status, setStatus] = useState("");
+
+  const canGenerate = useMemo(() => {
+    if (isPending) return false;
+    if (showUrlInput && inputMode === "url") return url.trim().length > 8;
+    return content.trim().length > 0;
+  }, [content, url, inputMode, showUrlInput, isPending]);
 
   const defaultPlaceholder =
     mode === "topic"
@@ -41,7 +50,7 @@ export function ThreadGenerator({
         : "Paste your blog post, newsletter, or long-form article here...";
 
   async function fetchUrlContent(targetUrl: string) {
-        const res = await fetch("/api/fetch-url/", {
+    const res = await fetch("/api/fetch-url/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ url: targetUrl })
@@ -54,8 +63,9 @@ export function ThreadGenerator({
   }
 
   function onGenerate() {
+    if (!canGenerate) return;
     setError("");
-    setCopied(false);
+    setShareUrl("");
     startTransition(async () => {
       try {
         let source = content.trim();
@@ -73,22 +83,17 @@ export function ThreadGenerator({
         });
         const data = (await res.json()) as { thread?: string; error?: string };
         if (!res.ok || !data.thread) {
-          throw new Error(data.error || "Generation failed.");
+          throw new Error(data.error || "Generation failed. Please try again.");
         }
         setThread(data.thread);
         setStatus("");
       } catch (err) {
         setStatus("");
-        setError(err instanceof Error ? err.message : "Something went wrong.");
+        setError(
+          err instanceof Error ? err.message : "Generation failed. Please try again."
+        );
       }
     });
-  }
-
-  async function onCopy() {
-    if (!thread) return;
-    await navigator.clipboard.writeText(thread);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 1800);
   }
 
   const lines = splitThreadLines(thread);
@@ -147,6 +152,7 @@ export function ThreadGenerator({
           value={url}
           onChange={(e) => setUrl(e.target.value)}
           placeholder="https://yourblog.com/your-best-post"
+          aria-label="Blog post URL"
           className="mb-4 w-full rounded-xl border border-line bg-white px-4 py-3 text-sm outline-none ring-brand/30 placeholder:text-ink/35 focus:ring-2"
         />
       ) : (
@@ -155,6 +161,11 @@ export function ThreadGenerator({
           onChange={(e) => setContent(e.target.value)}
           rows={compact ? 7 : 10}
           placeholder={placeholder || defaultPlaceholder}
+          aria-label={
+            mode === "topic"
+              ? "Topic or idea for your thread"
+              : "Your blog post text or article"
+          }
           className="mb-4 w-full resize-y rounded-xl border border-line bg-white px-4 py-3 text-sm leading-6 outline-none ring-brand/30 placeholder:text-ink/35 focus:ring-2"
         />
       )}
@@ -163,7 +174,7 @@ export function ThreadGenerator({
         <button
           type="button"
           onClick={onGenerate}
-          disabled={isPending}
+          disabled={!canGenerate}
           className="rounded-xl bg-brand px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-dark disabled:cursor-not-allowed disabled:opacity-60"
         >
           {isPending
@@ -185,31 +196,15 @@ export function ThreadGenerator({
 
       {thread ? (
         <div className="mt-6 border-t border-line pt-6">
-          <div className="mb-4 flex flex-wrap items-center gap-2">
-            <button
-              type="button"
-              onClick={onCopy}
-              className="rounded-lg border border-line bg-mist px-3 py-2 text-sm font-medium text-ink hover:bg-brand-soft"
-            >
-              {copied ? "Copied" : "Copy all"}
-            </button>
-            <button
-              type="button"
-              onClick={() => downloadMarkdown(thread)}
-              className="rounded-lg border border-line bg-mist px-3 py-2 text-sm font-medium text-ink hover:bg-brand-soft"
-            >
-              Export Markdown
-            </button>
-            <button
-              type="button"
-              onClick={() => downloadPdf(thread)}
-              className="rounded-lg border border-line bg-mist px-3 py-2 text-sm font-medium text-ink hover:bg-brand-soft"
-            >
-              Export PDF
-            </button>
-          </div>
+          <ThreadActions
+            text={thread}
+            shareUrl={shareUrl}
+            mode={mode}
+            showSave
+            onSaved={setShareUrl}
+          />
 
-          <div className="space-y-3">
+          <div className="mt-5 space-y-3">
             {lines.map((line, index) => (
               <article
                 key={`${index}-${line.slice(0, 24)}`}
@@ -218,6 +213,40 @@ export function ThreadGenerator({
                 {line}
               </article>
             ))}
+          </div>
+
+          <div className="mt-6">
+            <EmailCapture
+              compact
+              heading="Save your history"
+              blurb="Leave your email to get history sync and product updates when they ship."
+            />
+          </div>
+
+          <div className="mt-6 rounded-xl border border-line bg-mist/50 px-4 py-4 text-sm text-ink/70">
+            <p className="font-semibold text-ink">Next steps</p>
+            <ul className="mt-2 flex flex-wrap gap-x-4 gap-y-2">
+              <li>
+                <Link href="/guides/how-to-make-a-thread-on-twitter/" className="text-brand hover:underline">
+                  Thread guide
+                </Link>
+              </li>
+              <li>
+                <Link href="/blog-to-tweet/" className="text-brand hover:underline">
+                  Blog to Tweet
+                </Link>
+              </li>
+              <li>
+                <Link href="/tools/thread-to-pdf/" className="text-brand hover:underline">
+                  Export PDF tips
+                </Link>
+              </li>
+              <li>
+                <Link href="/ai-thread-generator/" className="text-brand hover:underline">
+                  AI Thread Generator
+                </Link>
+              </li>
+            </ul>
           </div>
         </div>
       ) : null}

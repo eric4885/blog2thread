@@ -15,7 +15,13 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  const body = (await req.json()) as { url?: string };
+  let body: { url?: string };
+  try {
+    body = await req.json();
+  } catch {
+    return NextResponse.json({ error: "Invalid request." }, { status: 400 });
+  }
+
   const url = body.url?.trim();
   if (!url) {
     return NextResponse.json({ error: "Please provide a URL." }, { status: 400 });

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { CURRENT_YEAR, SITE_NAME, SITE_URL } from "@/lib/site";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
@@ -20,7 +20,7 @@ export default function TermsPage() {
           Terms of Service
         </h1>
         <p className="mt-3 text-sm text-ink/55">
-          Last updated: {CURRENT_YEAR}-08-31
+          Last updated: 2026-08-31
         </p>
         <div className="prose-guide mt-6 space-y-4">
           <p>

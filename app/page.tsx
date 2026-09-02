@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { RecentThreads } from "@/components/recent-threads";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { ThreadGenerator } from "@/components/thread-generator";
-import { CURRENT_YEAR, SITE_URL } from "@/lib/site";
+import { SITE_URL } from "@/lib/site";
 import { HOME_DESCRIPTION, HOME_TITLE, pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
@@ -11,6 +12,9 @@ export const metadata: Metadata = pageMetadata({
   description: HOME_DESCRIPTION,
   path: "/"
 });
+
+/** Recent threads read from KV — must not be a one-shot static shell. */
+export const dynamic = "force-dynamic";
 
 const faqItems = [
   {
@@ -72,7 +76,7 @@ const faqJsonLd = {
   }))
 };
 
-export default function HomePage() {
+export default async function HomePage() {
   return (
     <div className="min-h-screen">
       <script
@@ -84,7 +88,7 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
-      <SiteHeader isHome />
+      <SiteHeader />
 
       <main className="mx-auto w-full max-w-6xl px-4 py-10 md:px-6 md:py-14">
         <section className="mb-10 max-w-3xl">
@@ -98,11 +102,11 @@ export default function HomePage() {
             </span>
           </p>
           <p className="mb-3 text-sm font-semibold uppercase tracking-[0.14em] text-brand">
-            Free · No sign-up · #{CURRENT_YEAR} best pick
+            Free · No sign-up · The best free way to turn blogs into X threads
           </p>
-          <p className="font-display text-3xl font-semibold tracking-tight text-ink md:text-4xl">
-            Turn Any Blog Post into an X Thread
-          </p>
+          <h1 className="font-display text-3xl font-semibold tracking-tight text-ink md:text-4xl">
+            Turn Any Blog Post into an X Thread — Free Twitter Thread Generator
+          </h1>
           <p className="mt-5 text-base leading-7 text-ink/70 md:text-lg">
             The <strong>best</strong> free AI thread creator for X —{" "}
             <strong>no sign-up required</strong>. Paste a blog URL or article
@@ -114,6 +118,8 @@ export default function HomePage() {
         <div id="generator">
           <ThreadGenerator showUrlInput />
         </div>
+
+        <RecentThreads />
 
         <section className="mt-14">
           <h2 className="font-display text-2xl font-semibold text-ink">
@@ -306,10 +312,10 @@ export default function HomePage() {
           <p className="mt-4 max-w-3xl text-sm leading-7 text-ink/75 md:text-base">
             Why Blog2Thread? — <strong>More accurate</strong> than generic free
             tools. <strong>Smarter</strong> structure. <strong>One-click</strong>{" "}
-            to copy. Join <strong>10,000+</strong> creators who use Blog2Thread
-            to grow on X. Turn long-form work into a{" "}
-            <strong>ready-to-post</strong> thread in <strong>seconds</strong> —
-            without prompt gymnastics — and keep a CTA that sends readers home.
+            to copy. Join founders and creators who use Blog2Thread to grow on
+            X. Turn long-form work into a <strong>ready-to-post</strong> thread
+            in <strong>seconds</strong> — without prompt gymnastics — and keep a
+            CTA that sends readers home.
           </p>
           <p className="mt-4 text-sm leading-6 text-ink/70">
             <strong>Pricing today:</strong> free to start, no login wall. Higher
