@@ -1,15 +1,19 @@
 import { GuideLayout } from "@/components/guide-layout";
 import type { GuideEntry } from "@/lib/guides/types";
 
-export const guide: GuideEntry = {
+const meta = {
   slug: "twitter-thread-hooks-that-work",
   title: "Twitter Thread Hooks That Actually Stop the Scroll",
   description:
-    "Five hook patterns for X threads — with weak vs strong examples. No templates that sound like every other AI thread.",
+    "Five hook patterns for X threads — with weak vs strong examples. No templates that sound like every other AI thread."
+};
+
+export const guide: GuideEntry = {
+  ...meta,
   Content: function ThreadHooksContent() {
     return (
       <GuideLayout
-        guide={guide}
+        guide={meta}
         intro="Most threads die on tweet one. Not because the ideas are bad — because the opening sounds like a syllabus. These are the patterns I reach for when I need someone to keep reading past the fold."
       >
         <h2>Rule zero: tweet one is not your blog title</h2>

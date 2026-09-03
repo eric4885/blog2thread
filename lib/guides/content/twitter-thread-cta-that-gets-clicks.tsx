@@ -1,15 +1,19 @@
 import { GuideLayout } from "@/components/guide-layout";
 import type { GuideEntry } from "@/lib/guides/types";
 
-export const guide: GuideEntry = {
+const meta = {
   slug: "twitter-thread-cta-that-gets-clicks",
   title: "Thread CTAs That Get Clicks (Without Feeling Salesy)",
   description:
-    "How to close a Twitter thread for traffic, follows, or replies — with weak vs strong examples for each goal.",
+    "How to close a Twitter thread for traffic, follows, or replies — with weak vs strong examples for each goal."
+};
+
+export const guide: GuideEntry = {
+  ...meta,
   Content: function ThreadCtaContent() {
     return (
       <GuideLayout
-        guide={guide}
+        guide={meta}
         intro="The last tweet is not an afterthought. It is the receipt for the time people spent reading. Match the CTA to what you actually want — and earn the ask in the tweets before it."
       >
         <h2>Pick one goal per thread</h2>

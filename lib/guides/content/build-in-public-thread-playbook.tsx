@@ -1,15 +1,19 @@
 import { GuideLayout } from "@/components/guide-layout";
 import type { GuideEntry } from "@/lib/guides/types";
 
-export const guide: GuideEntry = {
+const meta = {
   slug: "build-in-public-thread-playbook",
   title: "Build-in-Public Threads That Do Not Feel Cringe",
   description:
-    "What to share after you ship, what to leave out, and how to write founder update threads people actually finish reading.",
+    "What to share after you ship, what to leave out, and how to write founder update threads people actually finish reading."
+};
+
+export const guide: GuideEntry = {
+  ...meta,
   Content: function BuildInPublicContent() {
     return (
       <GuideLayout
-        guide={guide}
+        guide={meta}
         intro="Build in public works when you share receipts, not vibes. The threads that perform are specific about what shipped, what broke, and what you would repeat — not hourly motivation quotes."
       >
         <h2>Good thread material</h2>

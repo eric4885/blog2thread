@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getAllGuideSlugs, getGuideBySlug } from "@/lib/guides";
+import { getAllGuideSlugs, loadGuide } from "@/lib/guides";
 import { pageMetadata } from "@/lib/seo";
 
 type PageProps = {
@@ -13,7 +13,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const guide = getGuideBySlug(slug);
+  const guide = await loadGuide(slug);
   if (!guide) return { title: "Guide not found" };
   return pageMetadata({
     title: guide.title,
@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function GuidePage({ params }: PageProps) {
   const { slug } = await params;
-  const guide = getGuideBySlug(slug);
+  const guide = await loadGuide(slug);
   if (!guide) notFound();
   const { Content } = guide;
   return <Content />;

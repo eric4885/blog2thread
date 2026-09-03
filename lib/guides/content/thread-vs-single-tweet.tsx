@@ -2,15 +2,19 @@ import Link from "next/link";
 import { GuideLayout } from "@/components/guide-layout";
 import type { GuideEntry } from "@/lib/guides/types";
 
-export const guide: GuideEntry = {
+const meta = {
   slug: "thread-vs-single-tweet",
   title: "Thread vs Single Tweet: When to Use Each",
   description:
-    "Not every blog post needs a thread. A simple decision guide for founders and marketers — with examples of what belongs in one tweet vs ten.",
+    "Not every blog post needs a thread. A simple decision guide for founders and marketers — with examples of what belongs in one tweet vs ten."
+};
+
+export const guide: GuideEntry = {
+  ...meta,
   Content: function ThreadVsTweetContent() {
     return (
       <GuideLayout
-        guide={guide}
+        guide={meta}
         intro="Threads are not automatically better than single tweets. They cost more attention. Use them when the idea needs sequential proof — not because you published a long blog."
       >
         <h2>Default to one tweet when…</h2>

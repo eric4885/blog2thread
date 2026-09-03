@@ -1,15 +1,19 @@
 import { GuideLayout } from "@/components/guide-layout";
 import type { GuideEntry } from "@/lib/guides/types";
 
-export const guide: GuideEntry = {
+const meta = {
   slug: "how-many-tweets-in-a-thread",
   title: "How Many Tweets Should a Thread Be?",
   description:
-    "Short answer: fewer than you think. When to stop at 7, when to go to 12, and when to split into two threads.",
+    "Short answer: fewer than you think. When to stop at 7, when to go to 12, and when to split into two threads."
+};
+
+export const guide: GuideEntry = {
+  ...meta,
   Content: function ThreadLengthContent() {
     return (
       <GuideLayout
-        guide={guide}
+        guide={meta}
         intro="There is no magic number. There is a point where each extra tweet stops adding proof and starts diluting the spine. Here is how I decide length before I post."
       >
         <h2>The default range: 7–12 tweets</h2>

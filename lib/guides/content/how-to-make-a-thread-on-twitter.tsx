@@ -3,7 +3,7 @@ import { GuideLayout } from "@/components/guide-layout";
 import { CURRENT_YEAR } from "@/lib/site";
 import type { GuideEntry } from "@/lib/guides/types";
 
-export const guide: GuideEntry = {
+const meta = {
   slug: "how-to-make-a-thread-on-twitter",
   title: `How to Make a Thread on Twitter: Complete Guide (${CURRENT_YEAR})`,
   description:
@@ -14,11 +14,15 @@ export const guide: GuideEntry = {
     { name: "Break the argument into one idea per tweet", text: "Keep each tweet under 280 characters." },
     { name: "End with a clear CTA", text: "Ask for a follow, reply, or link to the full post." },
     { name: "Optional: generate with AI", text: "Paste your blog into Blog2Thread to draft faster." }
-  ],
+  ]
+};
+
+export const guide: GuideEntry = {
+  ...meta,
   Content: function HowToMakeAThreadContent() {
     return (
       <GuideLayout
-        guide={guide}
+        guide={meta}
         intro="Threads are still one of the highest-leverage formats on X — if you structure them like an argument, not a chopped-up essay. Here is the workflow I would use before posting anything longer than three tweets."
       >
         <h2>What counts as a thread</h2>

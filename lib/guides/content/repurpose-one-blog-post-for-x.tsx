@@ -2,15 +2,19 @@ import Link from "next/link";
 import { GuideLayout } from "@/components/guide-layout";
 import type { GuideEntry } from "@/lib/guides/types";
 
-export const guide: GuideEntry = {
+const meta = {
   slug: "repurpose-one-blog-post-for-x",
   title: "How to Repurpose One Blog Post Into a Week on X",
   description:
-    "A practical calendar: one long-form post → thread, single tweet, quote, and follow-up — without sounding like you posted the same thing four times.",
+    "A practical calendar: one long-form post → thread, single tweet, quote, and follow-up — without sounding like you posted the same thing four times."
+};
+
+export const guide: GuideEntry = {
+  ...meta,
   Content: function RepurposeBlogContent() {
     return (
       <GuideLayout
-        guide={guide}
+        guide={meta}
         intro="You already wrote the hard part. The blog exists. The mistake is treating distribution as one copy-paste job. Here is a week-long plan that reuses the same source without spamming your timeline."
       >
         <h2>Start with angles, not formats</h2>

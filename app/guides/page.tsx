@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { guides } from "@/lib/guides";
+import { guideMetas } from "@/lib/guides";
 import { CURRENT_YEAR } from "@/lib/site";
 import { pageMetadata } from "@/lib/seo";
 
@@ -31,7 +31,7 @@ export default function GuidesIndexPage() {
         </p>
 
         <ul className="mt-10 space-y-4">
-          {guides.map((g) => (
+          {guideMetas.map((g) => (
             <li key={g.slug}>
               <Link
                 href={`/guides/${g.slug}/`}
