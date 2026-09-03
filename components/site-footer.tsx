@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { CURRENT_YEAR, SITE_NAME, SITE_URL } from "@/lib/site";
+import { guideNavItems } from "@/lib/guides";
 
 const productLinks = [
   { href: "/", label: "Twitter Thread Generator" },
@@ -10,10 +11,8 @@ const productLinks = [
 ] as const;
 
 const resourceLinks = [
-  {
-    href: "/guides/how-to-make-a-thread-on-twitter/",
-    label: "How to Make a Thread on Twitter"
-  },
+  { href: "/guides/", label: "All Guides" },
+  ...guideNavItems.slice(0, 4),
   { href: "/about/", label: "About" }
 ] as const;
 
