@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getAllGuideSlugs, loadGuide } from "@/lib/guides";
+import { getAllGuideSlugs } from "@/lib/guides/meta";
+import { loadGuide } from "@/lib/guides/load-guide";
 import { pageMetadata } from "@/lib/seo";
 
 type PageProps = {

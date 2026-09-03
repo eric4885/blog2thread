@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { CURRENT_YEAR, SITE_NAME, SITE_URL } from "@/lib/site";
-import { guideNavItems } from "@/lib/guides";
+import { guideNavItems } from "@/lib/guides/meta";
 
 const productLinks = [
   { href: "/", label: "Twitter Thread Generator" },

@@ -1,4 +1,5 @@
 import { CURRENT_YEAR } from "@/lib/site";
+import { GUIDE_SLUGS } from "./slugs";
 
 export type GuideMeta = {
   slug: string;
@@ -58,7 +59,7 @@ export const guideMetas: GuideMeta[] = [
 ];
 
 export function getAllGuideSlugs(): string[] {
-  return guideMetas.map((m) => m.slug);
+  return [...GUIDE_SLUGS];
 }
 
 export const guideNavItems = guideMetas.map((m) => ({

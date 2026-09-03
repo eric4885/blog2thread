@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { guideMetas } from "@/lib/guides";
+import { guideMetas } from "@/lib/guides/meta";
 import { CURRENT_YEAR } from "@/lib/site";
 import { pageMetadata } from "@/lib/seo";
 

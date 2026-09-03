@@ -1,12 +1,10 @@
 import type { MetadataRoute } from "next";
-import { getAllGuideSlugs } from "@/lib/guides";
+import { GUIDE_SLUGS } from "@/lib/guides/slugs";
 import { SITE_URL } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
-  const guideRoutes = getAllGuideSlugs().map(
-    (slug) => `/guides/${slug}/`
-  );
+  const guideRoutes = GUIDE_SLUGS.map((slug) => `/guides/${slug}/`);
 
   const routes = [
     "/",
