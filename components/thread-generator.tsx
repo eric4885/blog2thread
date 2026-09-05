@@ -1,9 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState, useTransition } from "react";
+import { useEffect, useMemo, useState, useTransition } from "react";
 import { EmailCapture } from "@/components/email-capture";
 import { ThreadActions } from "@/components/thread-actions";
+import {
+  pushGeneratedDraft,
+  readDraft,
+  writeDraft
+} from "@/lib/draft-storage";
 import { splitThreadLines } from "@/lib/export";
 
 export type GeneratorMode = "thread" | "tweet" | "topic";
@@ -31,16 +36,29 @@ export function ThreadGenerator({
   const [content, setContent] = useState("");
   const [url, setUrl] = useState("");
   const [thread, setThread] = useState("");
+  const [previousThread, setPreviousThread] = useState("");
+  const [lastSource, setLastSource] = useState("");
   const [shareUrl, setShareUrl] = useState("");
   const [error, setError] = useState("");
+  const [draftHint, setDraftHint] = useState(false);
   const [isPending, startTransition] = useTransition();
   const [status, setStatus] = useState("");
+
+  useEffect(() => {
+    const draft = readDraft(mode);
+    if (!draft?.current) return;
+    setDraftHint(true);
+    if (draft.previous) setPreviousThread(draft.previous);
+    if (draft.source) setLastSource(draft.source);
+  }, [mode]);
 
   const canGenerate = useMemo(() => {
     if (isPending) return false;
     if (showUrlInput && inputMode === "url") return url.trim().length > 8;
     return content.trim().length > 0;
   }, [content, url, inputMode, showUrlInput, isPending]);
+
+  const canRegenerate = Boolean(lastSource.trim()) && !isPending;
 
   const defaultPlaceholder =
     mode === "topic"
@@ -62,19 +80,19 @@ export function ThreadGenerator({
     return data.text;
   }
 
-  function onGenerate() {
-    if (!canGenerate) return;
-    setError("");
+  function applyGenerated(next: string, source: string) {
+    const draft = pushGeneratedDraft(mode, next, source, thread || undefined);
+    setPreviousThread(draft.previous || "");
+    setLastSource(source);
+    setThread(next);
     setShareUrl("");
+    setDraftHint(false);
+  }
+
+  function runGenerate(source: string) {
+    setError("");
     startTransition(async () => {
       try {
-        let source = content.trim();
-        if (showUrlInput && inputMode === "url") {
-          setStatus("Fetching article...");
-          source = await fetchUrlContent(url.trim());
-          setContent(source);
-        }
-
         setStatus("Generating...");
         const res = await fetch("/api/generate/", {
           method: "POST",
@@ -85,7 +103,7 @@ export function ThreadGenerator({
         if (!res.ok || !data.thread) {
           throw new Error(data.error || "Generation failed. Please try again.");
         }
-        setThread(data.thread);
+        applyGenerated(data.thread, source);
         setStatus("");
       } catch (err) {
         setStatus("");
@@ -94,6 +112,69 @@ export function ThreadGenerator({
         );
       }
     });
+  }
+
+  function onGenerate() {
+    if (!canGenerate) return;
+    startTransition(async () => {
+      try {
+        setError("");
+        let source = content.trim();
+        if (showUrlInput && inputMode === "url") {
+          setStatus("Fetching article...");
+          source = await fetchUrlContent(url.trim());
+          setContent(source);
+        }
+        setStatus("Generating...");
+        const res = await fetch("/api/generate/", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ content: source, mode })
+        });
+        const data = (await res.json()) as { thread?: string; error?: string };
+        if (!res.ok || !data.thread) {
+          throw new Error(data.error || "Generation failed. Please try again.");
+        }
+        applyGenerated(data.thread, source);
+        setStatus("");
+      } catch (err) {
+        setStatus("");
+        setError(
+          err instanceof Error ? err.message : "Generation failed. Please try again."
+        );
+      }
+    });
+  }
+
+  function onRegenerate() {
+    if (!canRegenerate) return;
+    runGenerate(lastSource.trim());
+  }
+
+  function onRestorePrevious() {
+    if (!previousThread || previousThread === thread) return;
+    const swappedCurrent = thread;
+    setThread(previousThread);
+    setPreviousThread(swappedCurrent);
+    setShareUrl("");
+    writeDraft({
+      mode,
+      current: previousThread,
+      previous: swappedCurrent || undefined,
+      source: lastSource || undefined,
+      updatedAt: new Date().toISOString()
+    });
+    setDraftHint(false);
+  }
+
+  function onRestoreLastDraft() {
+    const draft = readDraft(mode);
+    if (!draft?.current) return;
+    setThread(draft.current);
+    setPreviousThread(draft.previous || "");
+    setLastSource(draft.source || "");
+    setShareUrl("");
+    setDraftHint(false);
   }
 
   const lines = splitThreadLines(thread);
@@ -183,6 +264,15 @@ export function ThreadGenerator({
               ? "Generate Tweet"
               : "Generate Thread"}
         </button>
+        {draftHint && !thread ? (
+          <button
+            type="button"
+            onClick={onRestoreLastDraft}
+            className="rounded-xl border border-line bg-white px-4 py-3 text-sm font-medium text-ink transition hover:bg-mist"
+          >
+            Restore last draft
+          </button>
+        ) : null}
         <p className="text-xs text-ink/50">
           Free · No sign-up · Ready to post in seconds
         </p>
@@ -196,6 +286,31 @@ export function ThreadGenerator({
 
       {thread ? (
         <div className="mt-6 border-t border-line pt-6">
+          <p className="mb-3 text-xs leading-5 text-ink/55">
+            AI gives you a fresh take each time — regenerate for another angle.
+          </p>
+
+          <div className="mb-4 flex flex-wrap items-center gap-2">
+            <button
+              type="button"
+              onClick={onRegenerate}
+              disabled={!canRegenerate}
+              className="rounded-lg border border-line bg-white px-3 py-2 text-sm font-medium text-ink hover:bg-mist disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              {isPending ? status || "Working..." : "Try another angle"}
+            </button>
+            {previousThread && previousThread !== thread ? (
+              <button
+                type="button"
+                onClick={onRestorePrevious}
+                disabled={isPending}
+                className="rounded-lg border border-dashed border-line bg-mist/60 px-3 py-2 text-sm font-medium text-ink/80 hover:bg-mist disabled:opacity-50"
+              >
+                Restore previous
+              </button>
+            ) : null}
+          </div>
+
           <ThreadActions
             text={thread}
             shareUrl={shareUrl}
