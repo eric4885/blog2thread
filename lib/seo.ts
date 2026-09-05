@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { CURRENT_YEAR, SITE_NAME, SITE_URL } from "@/lib/site";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 const OG_IMAGE = {
   url: "/og-image.png",
@@ -23,8 +23,13 @@ export function pageMetadata({
   const url = normalized === "/" ? `${SITE_URL}/` : `${SITE_URL}${normalized}`;
   const socialTitle = ogTitle || title;
 
+  // Homepage uses absolute title (already includes brand intent). Inner pages
+  // get `| Blog2Thread` from the root layout template — keep `title` short
+  // so the final SERP string stays near ~60 characters.
+  const isHome = normalized === "/";
+
   return {
-    title,
+    title: isHome ? { absolute: title } : title,
     description,
     alternates: { canonical: normalized },
     openGraph: {
@@ -44,6 +49,7 @@ export function pageMetadata({
   };
 }
 
-export const HOME_TITLE = `Twitter Thread Generator — Blog to X Threads (${CURRENT_YEAR})`;
+/** Absolute document title (no template suffix). Keep ≤ ~60 chars for SERP. */
+export const HOME_TITLE = "Twitter Thread Generator — Blog to X Threads";
 export const HOME_DESCRIPTION =
   "Convert any blog post into an engaging Twitter/X thread with AI. Paste your article URL or text, get a ready-to-post thread instantly. No sign-up required.";

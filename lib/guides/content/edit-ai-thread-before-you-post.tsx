@@ -4,7 +4,7 @@ import type { GuideEntry } from "@/lib/guides/types";
 
 const meta = {
   slug: "edit-ai-thread-before-you-post",
-  title: "How to Edit an AI Thread So It Does Not Sound Like a Bot",
+  title: "Edit an AI Thread Before You Post",
   description:
     "A five-minute pass for AI-drafted threads: what to delete, what to rewrite, and what to leave alone. Works for Blog2Thread or any generator."
 };

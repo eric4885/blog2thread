@@ -77,8 +77,8 @@ export default async function SharedThreadPage({ params }: PageProps) {
 
         <div className="mt-8">
           <EmailCapture
-            heading="Save your generation history"
-            blurb="Drop your email and we’ll notify you when history sync and higher limits land."
+            heading="Get product updates"
+            blurb="Drop your email for occasional product updates. No account required."
           />
         </div>
 

@@ -17,7 +17,7 @@ Goal: Turn the source into ONE viral-ready English tweet.
 
 Hard requirements:
 - Output exactly one tweet.
-- Keep it under 280 characters.
+- Keep it under 260 characters (X allows 280; leave headroom for edits).
 - Strong hook, concrete payoff, no hashtag spam.
 - Translate non-English input naturally into English.
 - Output only the tweet text. No quotes, labels, or explanations.
@@ -31,7 +31,7 @@ Goal: Create a high-engagement English Twitter/X thread from a topic or brief id
 
 Hard requirements:
 - Write 5 to 15 tweets.
-- Keep each tweet under 280 characters.
+- Keep each tweet under 260 characters (X allows 280; leave headroom for numbering/emoji).
 - Prefix each tweet with numbering like 1/, 2/, 3/...
 - Tweet 1 must be a scroll-stopping hook.
 - Make middle tweets scannable and specific.
@@ -47,7 +47,7 @@ Goal: Convert long-form input (blog post, article, newsletter) into a high-quali
 Hard requirements:
 - Write for English Twitter/X readers (translate non-English input naturally).
 - Keep total length between 8 and 15 tweets.
-- Keep each tweet under 280 characters.
+- Keep each tweet under 260 characters (X allows 280; leave headroom for numbering/emoji).
 - Prefix each tweet with numbering like 1/, 2/, 3/...
 - Make tweet 1 a strong hook (question, contrast, or result-first framing).
 - Keep middle tweets scannable with short lines and clean structure.
@@ -81,7 +81,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(
       {
         error:
-          "Server is not configured. Please set OPENAI_API_KEY in environment variables."
+          "Generation is temporarily unavailable. Please try again later."
       },
       { status: 500 }
     );

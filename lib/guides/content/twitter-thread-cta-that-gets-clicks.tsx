@@ -3,7 +3,7 @@ import type { GuideEntry } from "@/lib/guides/types";
 
 const meta = {
   slug: "twitter-thread-cta-that-gets-clicks",
-  title: "Thread CTAs That Get Clicks (Without Feeling Salesy)",
+  title: "Thread CTAs That Get Clicks",
   description:
     "How to close a Twitter thread for traffic, follows, or replies — with weak vs strong examples for each goal."
 };

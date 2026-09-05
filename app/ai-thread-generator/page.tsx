@@ -7,7 +7,7 @@ import { CURRENT_YEAR, SITE_URL } from "@/lib/site";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: `AI Thread Generator — Create Twitter/X Threads from Any Topic (${CURRENT_YEAR})`,
+  title: "AI Thread Generator — Any Topic",
   description:
     "Generate engaging Twitter threads from any topic with AI. Just enter your topic, get 5-15 tweets ready to post. Free, no login.",
   path: "/ai-thread-generator/"

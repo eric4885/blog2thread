@@ -218,8 +218,8 @@ export function ThreadGenerator({
           <div className="mt-6">
             <EmailCapture
               compact
-              heading="Save your history"
-              blurb="Leave your email to get history sync and product updates when they ship."
+              heading="Get product updates"
+              blurb="Leave your email for occasional product updates. No account required."
             />
           </div>
 

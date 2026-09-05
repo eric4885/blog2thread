@@ -3,7 +3,7 @@ import type { GuideEntry } from "@/lib/guides/types";
 
 const meta = {
   slug: "build-in-public-thread-playbook",
-  title: "Build-in-Public Threads That Do Not Feel Cringe",
+  title: "Build-in-Public Thread Playbook",
   description:
     "What to share after you ship, what to leave out, and how to write founder update threads people actually finish reading."
 };

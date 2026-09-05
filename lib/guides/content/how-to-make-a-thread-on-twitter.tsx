@@ -1,11 +1,10 @@
 import Link from "next/link";
 import { GuideLayout } from "@/components/guide-layout";
-import { CURRENT_YEAR } from "@/lib/site";
 import type { GuideEntry } from "@/lib/guides/types";
 
 const meta = {
   slug: "how-to-make-a-thread-on-twitter",
-  title: `How to Make a Thread on Twitter: Complete Guide (${CURRENT_YEAR})`,
+  title: "How to Make a Thread on Twitter",
   description:
     "Learn how to create engaging Twitter/X threads that get engagement. Step-by-step guide with tips, examples, and a free AI thread generator.",
   howToSteps: [

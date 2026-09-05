@@ -38,9 +38,8 @@ export default function PrivacyPage() {
             If you choose <strong>Save &amp; share</strong>, we store the
             generated draft so it can be opened via a public share link. Shared
             drafts are intended for social sharing and are marked not to be
-            indexed by search engines. If you submit an email for updates or
-            history features, we store that address to contact you about the
-            product.
+            indexed by search engines. If you submit an email for product
+            updates, we store that address to contact you about the product.
           </p>
           <h2>Logs and security</h2>
           <p>

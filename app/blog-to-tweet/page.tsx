@@ -7,11 +7,11 @@ import { SITE_URL } from "@/lib/site";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Blog to Tweet Converter — Turn Articles into Viral Tweets Free",
+  title: "Blog to Tweet Converter — Free",
   description:
     "Turn any blog post into a single powerful tweet with AI. Copy-paste your article URL and get a tweet-ready summary in seconds.",
   path: "/blog-to-tweet/",
-  ogTitle: "Blog to Tweet Converter — Turn Articles into Viral Tweets Free"
+  ogTitle: "Blog to Tweet Converter — Free"
 });
 
 const jsonLd = {

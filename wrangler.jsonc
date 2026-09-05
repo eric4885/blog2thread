@@ -16,6 +16,12 @@
   ],
   "images": {
     "binding": "IMAGES"
-  }
+  },
+  "kv_namespaces": [
+    {
+      "binding": "BLOG2THREAD_DATA",
+      "id": "b7f3e06914d647c69d623a9d91980e81"
+    }
+  ]
 }
 

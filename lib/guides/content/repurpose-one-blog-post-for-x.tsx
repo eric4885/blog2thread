@@ -4,7 +4,7 @@ import type { GuideEntry } from "@/lib/guides/types";
 
 const meta = {
   slug: "repurpose-one-blog-post-for-x",
-  title: "How to Repurpose One Blog Post Into a Week on X",
+  title: "Repurpose One Blog Post for X",
   description:
     "A practical calendar: one long-form post → thread, single tweet, quote, and follow-up — without sounding like you posted the same thing four times."
 };

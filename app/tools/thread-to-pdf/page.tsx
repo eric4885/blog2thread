@@ -7,7 +7,7 @@ import { SITE_URL } from "@/lib/site";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Twitter Thread to PDF — Save Your Thread as PDF",
+  title: "Twitter Thread to PDF",
   description:
     "Save a thread you generate with Blog2Thread as PDF or Markdown. Generate first, then export — no scraping other people’s X threads.",
   path: "/tools/thread-to-pdf/"

@@ -4,7 +4,7 @@ import type { GuideEntry } from "@/lib/guides/types";
 
 const meta = {
   slug: "thread-vs-single-tweet",
-  title: "Thread vs Single Tweet: When to Use Each",
+  title: "Thread vs Single Tweet",
   description:
     "Not every blog post needs a thread. A simple decision guide for founders and marketers — with examples of what belongs in one tweet vs ten."
 };

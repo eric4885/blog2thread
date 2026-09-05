@@ -43,7 +43,7 @@ const faqItems = [
   },
   {
     q: "Is Blog2Thread really free right now?",
-    a: "Yes — the core generator is free to use today with no sign-up wall. Pricing may expand later for higher limits; the free workflow stays the default starting path."
+    a: "Yes — the core generator is free to use today with no sign-up wall. Pricing may change in the future; the core generator stays free to start with today."
   }
 ];
 
@@ -318,8 +318,8 @@ export default async function HomePage() {
             CTA that sends readers home.
           </p>
           <p className="mt-4 text-sm leading-6 text-ink/70">
-            <strong>Pricing today:</strong> free to start, no login wall. Higher
-            limits may come later; the free path stays the default.
+            <strong>Pricing today:</strong> free to start, no login wall. The
+            free path stays the default starting experience.
           </p>
           <div className="mt-5 flex flex-wrap gap-3 text-sm">
             <Link href="/blog-to-tweet/" className="text-brand hover:underline">

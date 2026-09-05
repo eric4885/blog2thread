@@ -7,7 +7,7 @@ import { SITE_URL } from "@/lib/site";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Blog to Twitter Thread Converter — Free AI Tool",
+  title: "Blog to Twitter Thread Converter",
   description:
     "Convert any blog post into a Twitter/X thread with Blog2Thread. Paste your URL or text and get a ready-to-post thread in seconds.",
   path: "/blog-to-twitter-thread/"
@@ -58,7 +58,7 @@ export default function BlogToTwitterThreadPage() {
           </Link>
           . Also try{" "}
           <Link
-            href="/blog-to-tweet"
+            href="/blog-to-tweet/"
             className="font-semibold text-brand hover:underline"
           >
             Blog to Tweet

@@ -3,7 +3,7 @@ import type { GuideEntry } from "@/lib/guides/types";
 
 const meta = {
   slug: "twitter-thread-hooks-that-work",
-  title: "Twitter Thread Hooks That Actually Stop the Scroll",
+  title: "Twitter Thread Hooks That Work",
   description:
     "Five hook patterns for X threads — with weak vs strong examples. No templates that sound like every other AI thread."
 };

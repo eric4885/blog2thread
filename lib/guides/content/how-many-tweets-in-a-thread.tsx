@@ -3,7 +3,7 @@ import type { GuideEntry } from "@/lib/guides/types";
 
 const meta = {
   slug: "how-many-tweets-in-a-thread",
-  title: "How Many Tweets Should a Thread Be?",
+  title: "How Many Tweets in a Thread?",
   description:
     "Short answer: fewer than you think. When to stop at 7, when to go to 12, and when to split into two threads."
 };

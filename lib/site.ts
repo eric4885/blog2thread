@@ -8,8 +8,8 @@ export const GA_MEASUREMENT_ID =
 
 export const NAV_LINKS = [
   { href: "/", label: "Thread Generator" },
-  { href: "/blog-to-tweet", label: "Blog to Tweet" },
-  { href: "/ai-thread-generator", label: "AI Thread Generator" },
+  { href: "/blog-to-tweet/", label: "Blog to Tweet" },
+  { href: "/ai-thread-generator/", label: "AI Thread Generator" },
   { href: "/guides/", label: "Guides" },
-  { href: "/tools/thread-to-pdf", label: "Thread to PDF" }
+  { href: "/tools/thread-to-pdf/", label: "Thread to PDF" }
 ] as const;
