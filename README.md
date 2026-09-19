@@ -2,6 +2,15 @@
 
 Free AI Twitter/X thread generator — turn blog posts into ready-to-post threads.
 
+**Live site:** [https://blog2thread.com](https://blog2thread.com)
+
+Also useful:
+
+- [Best AI thread generators compared](https://blog2thread.com/best-ai-twitter-thread-generator/)
+- [How to make a thread on Twitter/X](https://blog2thread.com/guides/how-to-make-a-thread-on-twitter/)
+
+> Secrets stay out of git: copy `.env.example` → `.env.local` and set keys only on your machine / Cloudflare.
+
 ## Stack
 
 - Next.js 15 (App Router)
@@ -71,5 +80,6 @@ Do **not** set `HTTPS_PROXY` on Cloudflare (local-only).
 | `/blog-to-tweet` | Single tweet from blog |
 | `/ai-thread-generator` | Thread from topic |
 | `/blog-to-twitter-thread` | Brand exact-match page |
+| `/best-ai-twitter-thread-generator` | Comparison hub |
 | `/tools/thread-to-pdf` | PDF/Markdown export |
 | `/guides/how-to-make-a-thread-on-twitter` | SEO guide |
