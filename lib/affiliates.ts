@@ -15,7 +15,7 @@ export const AFFILIATE_LINKS: AffiliateLink[] = [
   },
   {
     name: "Hypefury",
-    href: "https://hypefury.com/?ref=blog2thread",
+    href: "https://hypefury.com/?via=eric-1ee99a",
     blurb: "Recycle evergreen + preview",
     sponsored: true
   },
