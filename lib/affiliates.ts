@@ -9,7 +9,7 @@ export type AffiliateLink = {
 export const AFFILIATE_LINKS: AffiliateLink[] = [
   {
     name: "Typefully",
-    href: "https://typefully.com/?ref=blog2thread",
+    href: "https://typefully.com/?via=eric-hu",
     blurb: "Calm editor + schedule",
     sponsored: true
   },
