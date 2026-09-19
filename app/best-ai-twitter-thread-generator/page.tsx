@@ -16,7 +16,8 @@ export const metadata: Metadata = pageMetadata({
   title: "Best AI Thread Generators 2026",
   description:
     "Honest comparison of the best AI Twitter/X thread generators — free no-login drafts vs schedule, voice, and recycle tools. Pick by stage, not hype.",
-  path: "/best-ai-twitter-thread-generator/"
+  path: "/best-ai-twitter-thread-generator/",
+  ogTitle: `Best AI Twitter/X Thread Generators Compared (${CURRENT_YEAR})`
 });
 
 const typefully = getAffiliate("Typefully")!;
