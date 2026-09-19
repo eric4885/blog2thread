@@ -66,7 +66,15 @@ export const guide: GuideEntry = {
         <h2>Pair both from one blog</h2>
         <p>
           Common weekly pattern: thread on Monday (full argument), single tweet
-          on Thursday (best standalone line). Same source, different jobs.
+          on Thursday (best standalone line). Same source, different jobs. When
+          you do need the full multi-tweet path, use{" "}
+          <Link
+            href="/guides/how-to-make-a-thread-on-twitter/"
+            className="font-semibold text-brand hover:underline"
+          >
+            how to make a thread on Twitter
+          </Link>
+          .
         </p>
       </GuideLayout>
     );

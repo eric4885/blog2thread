@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { GuideLayout } from "@/components/guide-layout";
 import type { GuideEntry } from "@/lib/guides/types";
 
@@ -75,6 +76,17 @@ export const guide: GuideEntry = {
           <li>Readers reply “can you expand on X?” on every post.</li>
           <li>You linked the blog because the thread itself did not deliver.</li>
         </ul>
+
+        <p>
+          New to the format? Start with the full{" "}
+          <Link
+            href="/guides/how-to-make-a-thread-on-twitter/"
+            className="font-semibold text-brand hover:underline"
+          >
+            how to make a thread on Twitter
+          </Link>{" "}
+          walkthrough (spine → hook → post).
+        </p>
       </GuideLayout>
     );
   }

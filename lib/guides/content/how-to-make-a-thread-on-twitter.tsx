@@ -6,13 +6,32 @@ const meta = {
   slug: "how-to-make-a-thread-on-twitter",
   title: "How to Make a Thread on Twitter",
   description:
-    "Learn how to create engaging Twitter/X threads that get engagement. Step-by-step guide with tips, examples, and a free AI thread generator.",
+    "How to make, create, write, and post a Twitter/X thread step by step — spine, hook, length, CTA, plus a free AI draft if you already have a blog.",
   howToSteps: [
-    { name: "Pick one spine idea", text: "Decide the single claim your thread exists to prove." },
-    { name: "Write a scroll-stopping first tweet", text: "Open with a result, contrast, or curiosity gap." },
-    { name: "Break the argument into one idea per tweet", text: "Keep each tweet under 280 characters." },
-    { name: "End with a clear CTA", text: "Ask for a follow, reply, or link to the full post." },
-    { name: "Optional: generate with AI", text: "Paste your blog into Blog2Thread to draft faster." }
+    {
+      name: "Pick one spine idea",
+      text: "Decide the single claim your thread exists to prove."
+    },
+    {
+      name: "Write a scroll-stopping first tweet",
+      text: "Open with a result, contrast, or curiosity gap."
+    },
+    {
+      name: "Break the argument into one idea per tweet",
+      text: "Keep each tweet under 280 characters."
+    },
+    {
+      name: "End with a clear CTA",
+      text: "Ask for a follow, reply, or link to the full post."
+    },
+    {
+      name: "Post the thread on X",
+      text: "Compose tweet one, use the + / add post control for each next tweet, then publish the whole thread."
+    },
+    {
+      name: "Optional: generate with AI",
+      text: "Paste your blog into Blog2Thread to draft faster, then edit the hook."
+    }
   ]
 };
 
@@ -22,13 +41,14 @@ export const guide: GuideEntry = {
     return (
       <GuideLayout
         guide={meta}
-        intro="Threads are still one of the highest-leverage formats on X — if you structure them like an argument, not a chopped-up essay. Here is the workflow I would use before posting anything longer than three tweets."
+        intro="If you searched how to make a thread on Twitter (or how to create, write, or post one on X), this is the full workflow — from spine to publish. Threads still reward depth on-platform when you structure them like an argument, not a chopped-up essay."
       >
-        <h2>What counts as a thread</h2>
+        <h2>What counts as a Twitter thread</h2>
         <p>
-          A thread is just a string of connected posts from the same account. The
-          format matters because X still rewards depth on-platform. You get room
-          for a claim, proof, and a close without sending people elsewhere first.
+          A Twitter thread (same idea on X) is a string of connected posts from
+          the same account. You get room for a claim, proof, and a close without
+          sending people off-app first. That is why &quot;how to write a Twitter
+          thread&quot; is less about typing and more about structure.
         </p>
 
         <h2>Step 1: Find the spine</h2>
@@ -41,14 +61,25 @@ export const guide: GuideEntry = {
         <h3>Spine examples that work</h3>
         <ul>
           <li>“Scheduling tools do not grow accounts — consistency does.”</li>
-          <li>“One blog post can fund a week of distribution if you thread it right.”</li>
+          <li>
+            “One blog post can fund a week of distribution if you thread it
+            right.”
+          </li>
           <li>“Most AI threads fail because they summarize instead of argue.”</li>
         </ul>
 
         <h2>Step 2: Write tweet one like a headline for skeptics</h2>
         <p>
           Titles describe. Hooks create tension. Use a specific result, a
-          contrarian line, or a gap the reader needs closed.
+          contrarian line, or a gap the reader needs closed. See more patterns
+          in{" "}
+          <Link
+            href="/guides/twitter-thread-hooks-that-work/"
+            className="font-semibold text-brand hover:underline"
+          >
+            Twitter thread hooks that work
+          </Link>
+          .
         </p>
         <ul>
           <li>Weak: “How to make a thread on Twitter (tips inside).”</li>
@@ -62,7 +93,14 @@ export const guide: GuideEntry = {
         <p>
           Each supporting point gets its own post. Short lines. No “and also”
           stuffed into the same tweet. Numbering (1/, 2/) helps educational
-          threads feel intentional, not accidental.
+          threads feel intentional, not accidental. For length ranges, read{" "}
+          <Link
+            href="/guides/how-many-tweets-in-a-thread/"
+            className="font-semibold text-brand hover:underline"
+          >
+            how many tweets in a thread
+          </Link>
+          .
         </p>
         <ul>
           <li>Short posts (~500–800 words): 5–7 tweets</li>
@@ -85,16 +123,59 @@ export const guide: GuideEntry = {
         </ul>
         <p>
           Deliver value inside the thread. The link should feel like an upgrade,
-          not a bait-and-switch.
+          not a bait-and-switch. More examples:{" "}
+          <Link
+            href="/guides/twitter-thread-cta-that-gets-clicks/"
+            className="font-semibold text-brand hover:underline"
+          >
+            thread CTAs that get clicks
+          </Link>
+          .
         </p>
 
-        <h2>Step 6: Five-minute edit before you post</h2>
+        <h2>Step 6: How to post a Twitter thread on X</h2>
+        <p>
+          Writing the copy is only half of &quot;how to create a thread on
+          Twitter.&quot; Publishing in the app:
+        </p>
+        <ol>
+          <li>Open Compose and paste or type tweet 1 (your hook).</li>
+          <li>
+            Use <strong>Add another post</strong> / the + control to attach tweet
+            2, 3, and so on in order.
+          </li>
+          <li>Preview on mobile if you can — line breaks look different there.</li>
+          <li>Publish the whole thread in one go (not as separate lone tweets).</li>
+        </ol>
+        <p>
+          Not every idea needs a thread. If one screenshot would carry the whole
+          point, use a{" "}
+          <Link
+            href="/guides/thread-vs-single-tweet/"
+            className="font-semibold text-brand hover:underline"
+          >
+            single tweet instead
+          </Link>
+          .
+        </p>
+
+        <h2>Step 7: Five-minute edit before you post</h2>
         <ol>
           <li>Rewrite the hook last — once you know the payoff.</li>
           <li>Delete any tweet that does not prove the spine.</li>
           <li>Check line breaks on your phone.</li>
           <li>Swap vague claims for numbers, names, or examples.</li>
         </ol>
+        <p>
+          If the draft came from AI, run this pass:{" "}
+          <Link
+            href="/guides/edit-ai-thread-before-you-post/"
+            className="font-semibold text-brand hover:underline"
+          >
+            edit an AI thread before you post
+          </Link>
+          .
+        </p>
 
         <h2>Mistakes I still see everywhere</h2>
         <ul>
@@ -114,15 +195,38 @@ export const guide: GuideEntry = {
             </Link>
             .
           </li>
-          <li>Generate, edit the hook, schedule.</li>
+          <li>Generate, edit the hook, then post the thread on X as above.</li>
           <li>
             Optional: spin a single{" "}
-            <Link href="/blog-to-tweet/" className="font-semibold text-brand hover:underline">
+            <Link
+              href="/blog-to-tweet/"
+              className="font-semibold text-brand hover:underline"
+            >
               blog-to-tweet
             </Link>{" "}
             teaser the same day.
           </li>
         </ol>
+
+        <h2>FAQ: making and posting threads</h2>
+        <h3>How do I create a thread on Twitter / X?</h3>
+        <p>
+          Write (or generate) numbered posts around one spine, then in Compose use
+          Add another post for each tweet and publish once. That is how you create
+          a thread instead of a pile of unrelated updates.
+        </p>
+        <h3>How do I write a Twitter thread that people finish?</h3>
+        <p>
+          Lead with tension in tweet one, one idea per tweet, and a CTA that
+          matches your goal. Length matters less than whether every line proves
+          the spine.
+        </p>
+        <h3>Can I turn a blog into a thread?</h3>
+        <p>
+          Yes — extract the claim, drop the SEO preamble, and rebuild as tweets.
+          Or paste the URL into the free generator on this site, then edit before
+          you post.
+        </p>
       </GuideLayout>
     );
   }

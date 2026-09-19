@@ -44,6 +44,10 @@ const faqItems = [
   {
     q: "Is Blog2Thread really free right now?",
     a: "Yes — the core generator is free to use today with no sign-up wall. Pricing may change in the future; the core generator stays free to start with today."
+  },
+  {
+    q: "How do I make a thread on Twitter if I am new to the format?",
+    a: "Follow the step-by-step guide: pick one spine idea, write a strong first tweet, one idea per post, then publish with X’s add-post control. Full walkthrough: https://blog2thread.com/guides/how-to-make-a-thread-on-twitter/"
   }
 ];
 
@@ -357,7 +361,24 @@ export default async function HomePage() {
                 className="rounded-2xl border border-line bg-white/80 p-5"
               >
                 <h3 className="text-base font-semibold text-ink">{item.q}</h3>
-                <p className="mt-2 text-sm leading-6 text-ink/70">{item.a}</p>
+                <p className="mt-2 text-sm leading-6 text-ink/70">
+                  {item.q.startsWith("How do I make a thread on Twitter") ? (
+                    <>
+                      Follow the step-by-step guide: pick one spine idea, write a
+                      strong first tweet, one idea per post, then publish with
+                      X&apos;s add-post control. Full walkthrough:{" "}
+                      <Link
+                        href="/guides/how-to-make-a-thread-on-twitter/"
+                        className="font-semibold text-brand hover:underline"
+                      >
+                        how to make a thread on Twitter
+                      </Link>
+                      .
+                    </>
+                  ) : (
+                    item.a
+                  )}
+                </p>
               </div>
             ))}
           </div>

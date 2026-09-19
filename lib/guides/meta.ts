@@ -12,7 +12,7 @@ export const guideMetas: GuideMeta[] = [
     slug: "how-to-make-a-thread-on-twitter",
     title: "How to Make a Thread on Twitter",
     description:
-      "Learn how to create engaging Twitter/X threads that get engagement. Step-by-step guide with tips, examples, and a free AI thread generator."
+      "How to make, create, write, and post a Twitter/X thread step by step — spine, hook, length, CTA, plus a free AI draft if you already have a blog."
   },
   {
     slug: "twitter-thread-hooks-that-work",

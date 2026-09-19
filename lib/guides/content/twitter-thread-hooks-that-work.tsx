@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { GuideLayout } from "@/components/guide-layout";
 import type { GuideEntry } from "@/lib/guides/types";
 
@@ -100,6 +101,17 @@ export const guide: GuideEntry = {
           rewrite tweet one around that. The hook should promise the payoff you
           actually deliver in tweets 4–7 — not a bigger promise than the thread
           can keep.
+        </p>
+        <p>
+          Hook is only step two of the full process. For spine → length → how to
+          post on X, see{" "}
+          <Link
+            href="/guides/how-to-make-a-thread-on-twitter/"
+            className="font-semibold text-brand hover:underline"
+          >
+            how to make a thread on Twitter
+          </Link>
+          .
         </p>
       </GuideLayout>
     );

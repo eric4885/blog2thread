@@ -68,6 +68,17 @@ export const guide: GuideEntry = {
           <li>Claims that are not in your source material</li>
           <li>Emoji every line — unless that is actually your brand</li>
         </ul>
+        <p>
+          Need the full publish workflow (including how to post the thread in the
+          X app)? Use{" "}
+          <Link
+            href="/guides/how-to-make-a-thread-on-twitter/"
+            className="font-semibold text-brand hover:underline"
+          >
+            how to make a thread on Twitter
+          </Link>
+          .
+        </p>
       </GuideLayout>
     );
   }

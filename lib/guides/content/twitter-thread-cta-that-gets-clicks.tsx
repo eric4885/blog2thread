@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { GuideLayout } from "@/components/guide-layout";
 import type { GuideEntry } from "@/lib/guides/types";
 
@@ -82,6 +83,16 @@ export const guide: GuideEntry = {
           Hiding the only useful content behind the link. If tweet three says “see
           the blog for the actual framework,” readers feel used. Put the framework
           in the thread. Use the link for depth — templates, code, long examples.
+        </p>
+        <p>
+          Still building the rest of the thread? Start from{" "}
+          <Link
+            href="/guides/how-to-make-a-thread-on-twitter/"
+            className="font-semibold text-brand hover:underline"
+          >
+            how to make a thread on Twitter
+          </Link>
+          .
         </p>
       </GuideLayout>
     );

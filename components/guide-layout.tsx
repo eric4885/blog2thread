@@ -83,6 +83,17 @@ export function GuideLayout({
           <hr className="my-10 border-line" />
           <p className="text-sm text-ink/60">
             More guides:{" "}
+            {guide.slug !== "how-to-make-a-thread-on-twitter" ? (
+              <>
+                <Link
+                  href="/guides/how-to-make-a-thread-on-twitter/"
+                  className="font-semibold text-brand hover:underline"
+                >
+                  how to make a thread on Twitter
+                </Link>
+                {" · "}
+              </>
+            ) : null}
             <Link href="/guides/" className="font-semibold text-brand hover:underline">
               all thread playbooks
             </Link>
