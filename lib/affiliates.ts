@@ -21,7 +21,7 @@ export const AFFILIATE_LINKS: AffiliateLink[] = [
   },
   {
     name: "Tweet Hunter",
-    href: "https://tweethunter.io/?ref=blog2thread",
+    href: "https://tweethunter.io/?via=eric-hu",
     blurb: "Viral library + AI",
     sponsored: true
   }
