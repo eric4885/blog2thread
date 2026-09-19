@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState, useTransition } from "react";
 import { EmailCapture } from "@/components/email-capture";
+import { ResultAffiliate } from "@/components/result-affiliate";
 import { ThreadActions } from "@/components/thread-actions";
 import {
   pushGeneratedDraft,
@@ -369,6 +370,12 @@ export function ThreadGenerator({
               </article>
             ))}
           </div>
+
+          <ResultAffiliate
+            threadId={
+              shareUrl.match(/\/thread\/([a-f0-9]+)\//i)?.[1]
+            }
+          />
 
           <div className="mt-6">
             <EmailCapture

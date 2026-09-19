@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { EmailCapture } from "@/components/email-capture";
+import { ResultAffiliate } from "@/components/result-affiliate";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { ThreadActions } from "@/components/thread-actions";
@@ -87,6 +88,8 @@ export default async function SharedThreadPage({ params }: PageProps) {
             </article>
           ))}
         </div>
+
+        <ResultAffiliate threadId={thread.id} />
 
         <div className="mt-8">
           <EmailCapture

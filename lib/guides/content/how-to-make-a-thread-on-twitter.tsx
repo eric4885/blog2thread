@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { GuideLayout } from "@/components/guide-layout";
+import { ToolFitTable } from "@/components/tool-fit-table";
 import type { GuideEntry } from "@/lib/guides/types";
 
 const meta = {
@@ -227,6 +228,8 @@ export const guide: GuideEntry = {
           Or paste the URL into the free generator on this site, then edit before
           you post.
         </p>
+
+        <ToolFitTable />
       </GuideLayout>
     );
   }
