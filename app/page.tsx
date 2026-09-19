@@ -342,6 +342,12 @@ export default async function HomePage() {
               How to make a thread on Twitter
             </Link>
             <Link
+              href="/best-ai-twitter-thread-generator/"
+              className="text-brand hover:underline"
+            >
+              Best AI thread tools
+            </Link>
+            <Link
               href="/blog-to-twitter-thread/"
               className="text-brand hover:underline"
             >

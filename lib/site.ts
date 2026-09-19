@@ -11,5 +11,6 @@ export const NAV_LINKS = [
   { href: "/blog-to-tweet/", label: "Blog to Tweet" },
   { href: "/ai-thread-generator/", label: "AI Thread Generator" },
   { href: "/guides/", label: "Guides" },
+  { href: "/best-ai-twitter-thread-generator/", label: "Alternatives" },
   { href: "/tools/thread-to-pdf/", label: "Thread to PDF" }
 ] as const;

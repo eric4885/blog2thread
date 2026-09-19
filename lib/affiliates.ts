@@ -1,18 +1,39 @@
-/** Swap query params when you get real affiliate IDs. */
-export const AFFILIATE_LINKS = [
+/** Partner / comparison links. Swap query params when real affiliate IDs land. */
+export type AffiliateLink = {
+  name: string;
+  href: string;
+  blurb: string;
+  sponsored?: boolean;
+};
+
+export const AFFILIATE_LINKS: AffiliateLink[] = [
   {
     name: "Typefully",
     href: "https://typefully.com/?ref=blog2thread",
-    blurb: "Calm editor + schedule"
+    blurb: "Calm editor + schedule",
+    sponsored: true
   },
   {
     name: "Hypefury",
     href: "https://hypefury.com/?ref=blog2thread",
-    blurb: "Recycle evergreen + preview"
+    blurb: "Recycle evergreen + preview",
+    sponsored: true
   },
   {
     name: "Tweet Hunter",
     href: "https://tweethunter.io/?ref=blog2thread",
-    blurb: "Viral library + AI"
+    blurb: "Viral library + AI",
+    sponsored: true
   }
-] as const;
+];
+
+/** Non-partner tools mentioned in comparisons (no sponsored claim). */
+export const COMPARISON_LINKS = {
+  postory: "https://postory.app/",
+  blogtweet: "https://blogtweet.com/",
+  tugan: "https://tugan.ai/"
+} as const;
+
+export function getAffiliate(name: string): AffiliateLink | undefined {
+  return AFFILIATE_LINKS.find((l) => l.name === name);
+}

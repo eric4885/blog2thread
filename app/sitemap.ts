@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/ai-thread-generator/",
     "/blog-to-twitter-thread/",
     "/tools/thread-to-pdf/",
+    "/best-ai-twitter-thread-generator/",
     "/guides/",
     ...guideRoutes,
     "/about/",

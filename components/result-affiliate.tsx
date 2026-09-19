@@ -25,7 +25,11 @@ export function ResultAffiliate({ threadId }: Props) {
             key={link.name}
             href={link.href}
             target="_blank"
-            rel="sponsored noopener noreferrer"
+            rel={
+              link.sponsored
+                ? "sponsored noopener noreferrer"
+                : "noopener noreferrer"
+            }
             className="inline-flex items-center rounded-lg border border-line bg-white px-3 py-1.5 text-xs font-medium text-ink transition hover:border-brand/40 hover:bg-brand-soft"
           >
             {link.name} — {link.blurb}

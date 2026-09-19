@@ -7,6 +7,7 @@ const productLinks = [
   { href: "/blog-to-tweet/", label: "Blog to Tweet" },
   { href: "/ai-thread-generator/", label: "AI Thread Generator" },
   { href: "/blog-to-twitter-thread/", label: "Blog to Twitter Thread" },
+  { href: "/best-ai-twitter-thread-generator/", label: "Best AI Thread Tools" },
   { href: "/tools/thread-to-pdf/", label: "Thread to PDF" }
 ] as const;
 

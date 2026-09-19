@@ -1,8 +1,5 @@
 /_next/static/*
   Cache-Control: public,max-age=31536000,immutable
 
-/robots.txt
-  X-Robots-Tag: noindex
-
 /sitemap.xml
   X-Robots-Tag: noindex

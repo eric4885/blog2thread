@@ -82,7 +82,14 @@ export function ToolFitTable() {
       </div>
       <p className="mt-3 text-sm leading-6 text-ink/65">
         Blog2Thread handles the <em>draft</em>. These tools handle{" "}
-        <em>distribution</em>. Most power users run both.
+        <em>distribution</em>. Most power users run both. Full write-up:{" "}
+        <Link
+          href="/best-ai-twitter-thread-generator/"
+          className="font-semibold text-brand hover:underline"
+        >
+          best AI Twitter thread generators compared
+        </Link>
+        .
       </p>
     </section>
   );

@@ -23,11 +23,20 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return { title: "Thread not found", robots: { index: false, follow: false } };
   }
 
-  const title = thread.preview.slice(0, 70) || "Shared thread";
-  const description =
-    thread.preview.length > 40
-      ? `${thread.preview.slice(0, 140)}${thread.preview.length > 140 ? "…" : ""}`
-      : `Ready-to-post X thread draft via ${SITE_NAME}.`;
+  const lines = splitThreadLines(thread.text);
+  const titleBase =
+    lines[0]?.trim() || thread.preview.trim() || "Shared thread";
+  const title = `${titleBase.slice(0, 55)}${titleBase.length > 55 ? "…" : ""} · ${SITE_NAME}`;
+  const rest = lines
+    .slice(1, 4)
+    .map((l) => l.trim())
+    .filter(Boolean)
+    .join(" ");
+  const description = (
+    rest ||
+    thread.preview ||
+    `Ready-to-post X thread draft via ${SITE_NAME}.`
+  ).slice(0, 200);
 
   return {
     title: { absolute: title },
@@ -41,7 +50,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       siteName: SITE_NAME,
       images: ["/og-image.png"]
     },
-    // X prefers twitter:* — must match og, or cards fall back to site defaults.
     twitter: {
       card: "summary_large_image",
       title,

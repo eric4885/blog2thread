@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { GuideLayout } from "@/components/guide-layout";
 import { ToolFitTable } from "@/components/tool-fit-table";
+import { CURRENT_YEAR } from "@/lib/site";
 import type { GuideEntry } from "@/lib/guides/types";
 
 const meta = {
@@ -230,6 +231,16 @@ export const guide: GuideEntry = {
         </p>
 
         <ToolFitTable />
+        <p className="mt-4 text-sm text-ink/65">
+          Want the full comparison (free vs schedule vs recycle)? See{" "}
+          <Link
+            href="/best-ai-twitter-thread-generator/"
+            className="font-semibold text-brand hover:underline"
+          >
+            best AI Twitter thread generators ({CURRENT_YEAR})
+          </Link>
+          .
+        </p>
       </GuideLayout>
     );
   }
