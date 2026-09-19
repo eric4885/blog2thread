@@ -1,30 +1,33 @@
 import { NextRequest, NextResponse } from "next/server";
 import axios from "axios";
 import { HttpsProxyAgent } from "https-proxy-agent";
-import { checkRateLimit, getClientIp } from "@/lib/rate-limit";
+import { checkFetchLimit, withAidCookie } from "@/lib/rate-limit";
 import { extractArticleText } from "@/lib/extract-article";
 
 export const runtime = "nodejs";
 
 export async function POST(req: NextRequest) {
-  const ip = getClientIp(req.headers);
-  if (!checkRateLimit(ip)) {
-    return NextResponse.json(
-      { error: "Rate limit exceeded. Please wait a minute." },
-      { status: 429, headers: { "Retry-After": "60" } }
-    );
-  }
+  const limited = await checkFetchLimit(req);
+  if (!limited.ok) return limited.response;
 
   let body: { url?: string };
   try {
     body = await req.json();
   } catch {
-    return NextResponse.json({ error: "Invalid request." }, { status: 400 });
+    return withAidCookie(
+      NextResponse.json({ error: "Invalid request." }, { status: 400 }),
+      limited.aid,
+      limited.aidIsNew
+    );
   }
 
   const url = body.url?.trim();
   if (!url) {
-    return NextResponse.json({ error: "Please provide a URL." }, { status: 400 });
+    return withAidCookie(
+      NextResponse.json({ error: "Please provide a URL." }, { status: 400 }),
+      limited.aid,
+      limited.aidIsNew
+    );
   }
 
   let parsed: URL;
@@ -34,7 +37,11 @@ export async function POST(req: NextRequest) {
       throw new Error("Invalid protocol");
     }
   } catch {
-    return NextResponse.json({ error: "Invalid URL." }, { status: 400 });
+    return withAidCookie(
+      NextResponse.json({ error: "Invalid URL." }, { status: 400 }),
+      limited.aid,
+      limited.aidIsNew
+    );
   }
 
   const PROXY_URL = process.env.HTTPS_PROXY || process.env.HTTP_PROXY;
@@ -55,24 +62,36 @@ export async function POST(req: NextRequest) {
 
     const text = extractArticleText(String(response.data || ""));
     if (text.length < 80) {
-      return NextResponse.json(
-        {
-          error:
-            "Could not extract enough article text (paywall, login wall, or JS-heavy page)."
-        },
-        { status: 422 }
+      return withAidCookie(
+        NextResponse.json(
+          {
+            error:
+              "Could not extract enough article text (paywall, login wall, or JS-heavy page)."
+          },
+          { status: 422 }
+        ),
+        limited.aid,
+        limited.aidIsNew
       );
     }
 
-    return NextResponse.json({ text, url: parsed.toString() });
+    await limited.commit();
+    return withAidCookie(
+      NextResponse.json({ text, url: parsed.toString() }),
+      limited.aid,
+      limited.aidIsNew
+    );
   } catch (error) {
     console.error("URL fetch failed", error);
-    return NextResponse.json(
-      {
-        error:
-          "Could not fetch that URL (blocked, private, or unreachable)."
-      },
-      { status: 502 }
+    return withAidCookie(
+      NextResponse.json(
+        {
+          error: "Could not fetch that URL (blocked, private, or unreachable)."
+        },
+        { status: 502 }
+      ),
+      limited.aid,
+      limited.aidIsNew
     );
   }
 }

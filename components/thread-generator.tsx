@@ -43,6 +43,7 @@ export function ThreadGenerator({
   const [draftHint, setDraftHint] = useState(false);
   const [isPending, startTransition] = useTransition();
   const [status, setStatus] = useState("");
+  const [limitHit, setLimitHit] = useState(false);
 
   useEffect(() => {
     const draft = readDraft(mode);
@@ -53,12 +54,12 @@ export function ThreadGenerator({
   }, [mode]);
 
   const canGenerate = useMemo(() => {
-    if (isPending) return false;
+    if (isPending || limitHit) return false;
     if (showUrlInput && inputMode === "url") return url.trim().length > 8;
     return content.trim().length > 0;
-  }, [content, url, inputMode, showUrlInput, isPending]);
+  }, [content, url, inputMode, showUrlInput, isPending, limitHit]);
 
-  const canRegenerate = Boolean(lastSource.trim()) && !isPending;
+  const canRegenerate = Boolean(lastSource.trim()) && !isPending && !limitHit;
 
   const defaultPlaceholder =
     mode === "topic"
@@ -101,21 +102,37 @@ export function ThreadGenerator({
     setDraftHint(false);
   }
 
+  async function postGenerate(source: string) {
+    const res = await fetch("/api/generate/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ content: source, mode })
+    });
+    const data = (await res.json()) as {
+      thread?: string;
+      error?: string;
+      code?: string;
+    };
+    if (res.status === 429 || data.code === "DAILY_LIMIT" || data.code === "BURST_LIMIT") {
+      setLimitHit(data.code === "DAILY_LIMIT");
+      throw new Error(
+        data.error ||
+          "Free limit reached for today. Try again tomorrow or leave your email below."
+      );
+    }
+    if (!res.ok || !data.thread) {
+      throw new Error(data.error || "Generation failed. Please try again.");
+    }
+    return data.thread;
+  }
+
   function runGenerate(source: string) {
     setError("");
     startTransition(async () => {
       try {
         setStatus("Generating...");
-        const res = await fetch("/api/generate/", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ content: source, mode })
-        });
-        const data = (await res.json()) as { thread?: string; error?: string };
-        if (!res.ok || !data.thread) {
-          throw new Error(data.error || "Generation failed. Please try again.");
-        }
-        applyGenerated(data.thread, source);
+        const next = await postGenerate(source);
+        applyGenerated(next, source);
         setStatus("");
       } catch (err) {
         setStatus("");
@@ -147,16 +164,8 @@ export function ThreadGenerator({
           }
         }
         setStatus("Generating...");
-        const res = await fetch("/api/generate/", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ content: source, mode })
-        });
-        const data = (await res.json()) as { thread?: string; error?: string };
-        if (!res.ok || !data.thread) {
-          throw new Error(data.error || "Generation failed. Please try again.");
-        }
-        applyGenerated(data.thread, source);
+        const next = await postGenerate(source);
+        applyGenerated(next, source);
         setStatus("");
       } catch (err) {
         setStatus("");
@@ -303,6 +312,16 @@ export function ThreadGenerator({
         <p className="mt-4 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
           {error}
         </p>
+      ) : null}
+
+      {limitHit ? (
+        <div className="mt-4">
+          <EmailCapture
+            compact
+            heading="Want more drafts today?"
+            blurb="Leave your email — we’ll note you’re waiting on higher limits and send product updates. No account required."
+          />
+        </div>
       ) : null}
 
       {thread ? (

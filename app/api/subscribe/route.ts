@@ -1,36 +1,43 @@
 import { NextRequest, NextResponse } from "next/server";
-import { checkRateLimit, getClientIp } from "@/lib/rate-limit";
+import { guardBurst, withAidCookie } from "@/lib/rate-limit";
 import { saveEmail } from "@/lib/store";
 
 export const runtime = "nodejs";
 
 export async function POST(req: NextRequest) {
   try {
-    const ip = getClientIp(req.headers);
-    if (!checkRateLimit(ip)) {
-      return NextResponse.json(
-        { error: "Rate limit exceeded. Please wait a minute." },
-        { status: 429 }
-      );
-    }
+    const limited = await guardBurst(req);
+    if (!limited.ok) return limited.response;
 
     let body: { email?: string };
     try {
       body = await req.json();
     } catch {
-      return NextResponse.json({ error: "Invalid request." }, { status: 400 });
+      return withAidCookie(
+        NextResponse.json({ error: "Invalid request." }, { status: 400 }),
+        limited.aid,
+        limited.aidIsNew
+      );
     }
 
     try {
       await saveEmail(body.email || "");
     } catch {
-      return NextResponse.json(
-        { error: "Please enter a valid email address." },
-        { status: 400 }
+      return withAidCookie(
+        NextResponse.json(
+          { error: "Please enter a valid email address." },
+          { status: 400 }
+        ),
+        limited.aid,
+        limited.aidIsNew
       );
     }
 
-    return NextResponse.json({ ok: true });
+    return withAidCookie(
+      NextResponse.json({ ok: true }),
+      limited.aid,
+      limited.aidIsNew
+    );
   } catch (error) {
     console.error("subscribe failed", error);
     return NextResponse.json(

@@ -2,7 +2,11 @@ import { getCloudflareContext } from "@opennextjs/cloudflare";
 
 type KvLike = {
   get(key: string): Promise<string | null>;
-  put(key: string, value: string): Promise<void>;
+  put(
+    key: string,
+    value: string,
+    options?: { expirationTtl?: number }
+  ): Promise<void>;
 };
 
 export type SavedThread = {

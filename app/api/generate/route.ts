@@ -1,7 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import axios from "axios";
 import { HttpsProxyAgent } from "https-proxy-agent";
-import { checkRateLimit, getClientIp } from "@/lib/rate-limit";
+import {
+  reserveGenerateLimit,
+  withAidCookie
+} from "@/lib/rate-limit";
 
 export const runtime = "nodejs";
 
@@ -69,7 +72,6 @@ function minInputLength(mode: GenerateMode): number {
 
 export async function POST(req: NextRequest) {
   const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
-  // Accept either https://api.apimart.ai or https://api.apimart.ai/v1
   const rawBase =
     process.env.OPENAI_BASE_URL?.replace(/\/+$/, "") || "https://api.apimart.ai";
   const chatCompletionsUrl = rawBase.endsWith("/v1")
@@ -80,20 +82,14 @@ export async function POST(req: NextRequest) {
   if (!OPENAI_API_KEY) {
     return NextResponse.json(
       {
-        error:
-          "Generation is temporarily unavailable. Please try again later."
+        error: "Generation is temporarily unavailable. Please try again later."
       },
       { status: 500 }
     );
   }
 
-  const ip = getClientIp(req.headers);
-  if (!checkRateLimit(ip)) {
-    return NextResponse.json(
-      { error: "Rate limit exceeded. Please wait a minute before generating again." },
-      { status: 429, headers: { "Retry-After": "60" } }
-    );
-  }
+  const reserved = await reserveGenerateLimit(req);
+  if (!reserved.ok) return reserved.response;
 
   let body: {
     content?: string;
@@ -102,7 +98,12 @@ export async function POST(req: NextRequest) {
   try {
     body = await req.json();
   } catch {
-    return NextResponse.json({ error: "Invalid request." }, { status: 400 });
+    await reserved.rollback();
+    return withAidCookie(
+      NextResponse.json({ error: "Invalid request." }, { status: 400 }),
+      reserved.aid,
+      reserved.aidIsNew
+    );
   }
 
   const mode: GenerateMode =
@@ -110,14 +111,19 @@ export async function POST(req: NextRequest) {
   const content = body.content?.trim() || "";
 
   if (content.length < minInputLength(mode)) {
-    return NextResponse.json(
-      {
-        error:
-          mode === "topic"
-            ? "Please enter a clearer topic (a short sentence works)."
-            : "Please paste a longer input (at least a few paragraphs)."
-      },
-      { status: 400 }
+    await reserved.rollback();
+    return withAidCookie(
+      NextResponse.json(
+        {
+          error:
+            mode === "topic"
+              ? "Please enter a clearer topic (a short sentence works)."
+              : "Please paste a longer input (at least a few paragraphs)."
+        },
+        { status: 400 }
+      ),
+      reserved.aid,
+      reserved.aidIsNew
     );
   }
 
@@ -155,7 +161,6 @@ export async function POST(req: NextRequest) {
     );
 
     const json = response.data;
-    // Some gateways may still return SSE text even when stream:false is set.
     let thread =
       typeof json === "string"
         ? ""
@@ -183,34 +188,54 @@ export async function POST(req: NextRequest) {
     }
 
     if (!thread) {
-      return NextResponse.json(
-        { error: "Generation failed. Please try again." },
-        { status: 500 }
+      await reserved.rollback();
+      return withAidCookie(
+        NextResponse.json(
+          { error: "Generation failed. Please try again." },
+          { status: 500 }
+        ),
+        reserved.aid,
+        reserved.aidIsNew
       );
     }
 
-    return NextResponse.json({ thread, mode, usedModel: MODEL });
+    await reserved.commit();
+    return withAidCookie(
+      NextResponse.json({ thread, mode, usedModel: MODEL }),
+      reserved.aid,
+      reserved.aidIsNew
+    );
   } catch (error: unknown) {
+    await reserved.rollback();
+
     if (axios.isAxiosError(error) && error.response) {
       const status = error.response.status;
       console.error("generation provider error", status, error.response.data);
-      return NextResponse.json(
-        {
-          error:
-            status === 401
-              ? "Generation failed. Please try again later."
-              : status === 429
-                ? "Too many requests. Please try again shortly."
-                : "Generation failed. Please try again."
-        },
-        { status: status === 401 ? 502 : status }
+      return withAidCookie(
+        NextResponse.json(
+          {
+            error:
+              status === 401
+                ? "Generation failed. Please try again later."
+                : status === 429
+                  ? "Too many requests. Please try again shortly."
+                  : "Generation failed. Please try again."
+          },
+          { status: status === 401 ? 502 : status }
+        ),
+        reserved.aid,
+        reserved.aidIsNew
       );
     }
 
     console.error("generation fetch failed", error);
-    return NextResponse.json(
-      { error: "Generation failed. Please try again." },
-      { status: 500 }
+    return withAidCookie(
+      NextResponse.json(
+        { error: "Generation failed. Please try again." },
+        { status: 500 }
+      ),
+      reserved.aid,
+      reserved.aidIsNew
     );
   }
 }
