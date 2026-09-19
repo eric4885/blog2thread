@@ -45,11 +45,15 @@ function burstBucket(): string {
 }
 
 function newAid(): string {
-  if (typeof crypto !== "undefined" && "randomUUID" in crypto) {
-    return crypto.randomUUID();
+  const c = globalThis.crypto as Crypto | undefined;
+  if (c?.randomUUID) {
+    return c.randomUUID();
   }
-  const bytes = crypto.getRandomValues(new Uint8Array(16));
-  return Array.from(bytes, (b) => b.toString(16).padStart(2, "0")).join("");
+  if (c?.getRandomValues) {
+    const bytes = c.getRandomValues(new Uint8Array(16));
+    return Array.from(bytes, (b) => b.toString(16).padStart(2, "0")).join("");
+  }
+  return `${Date.now().toString(16)}-${Math.random().toString(16).slice(2, 10)}`;
 }
 
 export function getClientIp(headers: Headers): string {
