@@ -75,9 +75,21 @@ export function ThreadGenerator({
     });
     const data = (await res.json()) as { text?: string; error?: string };
     if (!res.ok || !data.text) {
-      throw new Error(data.error || "Failed to fetch URL.");
+      const err = new Error(
+        data.error || "Failed to fetch URL."
+      ) as Error & { code?: string };
+      err.code = "URL_FETCH_FAILED";
+      throw err;
     }
     return data.text;
+  }
+
+  function switchToPasteText(message: string) {
+    setInputMode("text");
+    setStatus("");
+    setError(
+      `${message} Switched to Paste text — paste the article body below and generate again.`
+    );
   }
 
   function applyGenerated(next: string, source: string) {
@@ -122,8 +134,17 @@ export function ThreadGenerator({
         let source = content.trim();
         if (showUrlInput && inputMode === "url") {
           setStatus("Fetching article...");
-          source = await fetchUrlContent(url.trim());
-          setContent(source);
+          try {
+            source = await fetchUrlContent(url.trim());
+            setContent(source);
+          } catch (fetchErr) {
+            const msg =
+              fetchErr instanceof Error
+                ? fetchErr.message
+                : "Could not fetch that URL.";
+            switchToPasteText(msg);
+            return;
+          }
         }
         setStatus("Generating...");
         const res = await fetch("/api/generate/", {

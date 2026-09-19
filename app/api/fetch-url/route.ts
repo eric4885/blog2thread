@@ -58,7 +58,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json(
         {
           error:
-            "Could not extract enough article text from that URL. Paste the content manually instead."
+            "Could not extract enough article text (paywall, login wall, or JS-heavy page)."
         },
         { status: 422 }
       );
@@ -70,7 +70,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(
       {
         error:
-          "Failed to fetch that URL. The page may be blocked or private — paste the text instead."
+          "Could not fetch that URL (blocked, private, or unreachable)."
       },
       { status: 502 }
     );
