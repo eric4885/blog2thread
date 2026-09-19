@@ -22,16 +22,29 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return { title: "Thread not found", robots: { index: false, follow: false } };
   }
 
-  const title = thread.preview.slice(0, 60) || "Shared thread";
+  const title = thread.preview.slice(0, 70) || "Shared thread";
+  const description =
+    thread.preview.length > 40
+      ? `${thread.preview.slice(0, 140)}${thread.preview.length > 140 ? "…" : ""}`
+      : `Ready-to-post X thread draft via ${SITE_NAME}.`;
+
   return {
-    title,
-    description: `Shared X thread draft from ${SITE_NAME}.`,
+    title: { absolute: title },
+    description,
     robots: { index: false, follow: false },
     alternates: { canonical: `/thread/${id}/` },
     openGraph: {
       title,
-      description: `Shared X thread draft from ${SITE_NAME}.`,
+      description,
       url: `${SITE_URL}/thread/${id}/`,
+      siteName: SITE_NAME,
+      images: ["/og-image.png"]
+    },
+    // X prefers twitter:* — must match og, or cards fall back to site defaults.
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
       images: ["/og-image.png"]
     }
   };
