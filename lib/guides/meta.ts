@@ -18,13 +18,25 @@ export const guideMetas: GuideMeta[] = [
     slug: "twitter-thread-hooks-that-work",
     title: "Twitter Thread Hooks That Work",
     description:
-      "Five hook patterns for X threads — with weak vs strong examples. No templates that sound like every other AI thread."
+      "Hook patterns for X threads — with weak vs strong examples for bloggers and newsletter writers. No generic AI openers."
   },
   {
     slug: "repurpose-one-blog-post-for-x",
     title: "Repurpose One Blog Post for X",
     description:
       "A practical calendar: one long-form post → thread, single tweet, quote, and follow-up — without sounding like you posted the same thing four times."
+  },
+  {
+    slug: "blog-to-thread-for-newsletter-writers",
+    title: "Blog to Thread Tool for Newsletter Writers",
+    description:
+      "Turn a newsletter issue into an X thread without sounding like a paste of your email. Cadence, hooks, and a free draft path."
+  },
+  {
+    slug: "twitter-thread-outline-from-blog-post",
+    title: "Twitter Thread Outline From a Blog Post",
+    description:
+      "A reusable outline template: spine, hook options, proof tweets, CTA — before you write full lines or paste into a generator."
   },
   {
     slug: "how-many-tweets-in-a-thread",

@@ -3,6 +3,8 @@ export const GUIDE_SLUGS = [
   "how-to-make-a-thread-on-twitter",
   "twitter-thread-hooks-that-work",
   "repurpose-one-blog-post-for-x",
+  "blog-to-thread-for-newsletter-writers",
+  "twitter-thread-outline-from-blog-post",
   "how-many-tweets-in-a-thread",
   "thread-vs-single-tweet",
   "edit-ai-thread-before-you-post",

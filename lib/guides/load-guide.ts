@@ -7,6 +7,10 @@ const loaders: Record<string, () => Promise<{ guide: GuideEntry }>> = {
     import("./content/twitter-thread-hooks-that-work"),
   "repurpose-one-blog-post-for-x": () =>
     import("./content/repurpose-one-blog-post-for-x"),
+  "blog-to-thread-for-newsletter-writers": () =>
+    import("./content/blog-to-thread-for-newsletter-writers"),
+  "twitter-thread-outline-from-blog-post": () =>
+    import("./content/twitter-thread-outline-from-blog-post"),
   "how-many-tweets-in-a-thread": () =>
     import("./content/how-many-tweets-in-a-thread"),
   "thread-vs-single-tweet": () => import("./content/thread-vs-single-tweet"),

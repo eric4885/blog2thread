@@ -179,12 +179,49 @@ export const guide: GuideEntry = {
           .
         </p>
 
+        <h2>Before / after: blog intro → thread open</h2>
+        <p>
+          <strong>Blog intro (typical SEO open):</strong>
+        </p>
+        <blockquote>
+          “In today&apos;s digital landscape, creators need to repurpose content
+          across platforms. In this guide, we will explore how to make a thread
+          on Twitter step by step.”
+        </blockquote>
+        <p>
+          <strong>Thread open (same article, different job):</strong>
+        </p>
+        <blockquote>
+          “I stopped opening threads with the blog title. Bookmarks went up the
+          week I started with the result instead. Structure I use now:”
+        </blockquote>
+        <p>
+          Same source URL. Different first line. That is the gap between
+          “convert article to Twitter thread” as a chore and as a post people
+          finish.
+        </p>
+
         <h2>Mistakes I still see everywhere</h2>
         <ul>
-          <li>Using the blog title as tweet one.</li>
-          <li>Summarizing the whole post instead of arguing one claim.</li>
-          <li>Hiding the only useful insight behind a link.</li>
-          <li>Posting 20 weak tweets when 9 sharp ones would do.</li>
+          <li>
+            <strong>Using the blog title as tweet one</strong> — describe →
+            tension.
+          </li>
+          <li>
+            <strong>Summarizing the whole post</strong> instead of arguing one
+            claim.
+          </li>
+          <li>
+            <strong>Every tweet too long</strong> — if it needs a scroll inside
+            the tweet, split it.
+          </li>
+          <li>
+            <strong>Hiding the only useful insight behind a link</strong> —
+            deliver value in-thread first.
+          </li>
+          <li>
+            <strong>Posting 20 weak tweets</strong> when 9 sharp ones would do.
+          </li>
         </ul>
 
         <h2>Faster path if you publish weekly</h2>
@@ -227,7 +264,25 @@ export const guide: GuideEntry = {
         <p>
           Yes — extract the claim, drop the SEO preamble, and rebuild as tweets.
           Or paste the URL into the free generator on this site, then edit before
-          you post.
+          you post. For a week-long calendar after you publish, see{" "}
+          <Link
+            href="/guides/repurpose-one-blog-post-for-x/"
+            className="font-semibold text-brand hover:underline"
+          >
+            repurpose one blog post for X
+          </Link>
+          .
+        </p>
+        <h3>Should I outline before I write tweets?</h3>
+        <p>
+          If the blog is long or you keep losing the spine, yes. Use a{" "}
+          <Link
+            href="/guides/twitter-thread-outline-from-blog-post/"
+            className="font-semibold text-brand hover:underline"
+          >
+            thread outline from a blog post
+          </Link>
+          , then draft.
         </p>
 
         <ToolFitTable />
