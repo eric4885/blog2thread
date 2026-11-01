@@ -56,7 +56,7 @@ In Cloudflare → Workers → blog2thread → Settings → Build:
 
 | Field | Value |
 |------|--------|
-| Build command | `npx opennextjs-cloudflare build` |
+| Build command | `npx opennextjs-cloudflare build --dangerouslyUseUnsupportedNextVersion` |
 | Deploy command | `npx opennextjs-cloudflare deploy -- --keep-vars` |
 | Non-production deploy | `npx opennextjs-cloudflare upload -- --keep-vars` |
 
