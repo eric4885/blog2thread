@@ -56,6 +56,7 @@ In Cloudflare → Workers → blog2thread → Settings → Build:
 
 | Field | Value |
 |------|--------|
+| Install command | `npm install --no-fund --no-audit` (if the field exists; avoids strict `npm ci` lock drift) |
 | Build command | `npx opennextjs-cloudflare build --dangerouslyUseUnsupportedNextVersion` |
 | Deploy command | `npx opennextjs-cloudflare deploy -- --keep-vars` |
 | Non-production deploy | `npx opennextjs-cloudflare upload -- --keep-vars` |
