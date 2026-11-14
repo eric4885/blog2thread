@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { AFFILIATE_LINKS } from "@/lib/affiliates";
+import { AFFILIATE_DISCLOSURE, AFFILIATE_LINKS } from "@/lib/affiliates";
 
 const typefully = AFFILIATE_LINKS.find((l) => l.name === "Typefully")!;
 const hypefury = AFFILIATE_LINKS.find((l) => l.name === "Hypefury")!;
@@ -92,10 +92,8 @@ export function ToolFitTable() {
         .
       </p>
       <p className="mt-2 text-xs leading-5 text-ink/55">
-        Some links above are our own affiliate links (Typefully, Hypefury, Tweet
-        Hunter). If you buy through them, we may earn a commission at no extra
-        cost to you. We only recommend tools we would use for scheduling or
-        recycling after a draft exists.
+        {AFFILIATE_DISCLOSURE} We only recommend tools we would use for
+        scheduling or recycling after a draft exists.
       </p>
     </section>
   );

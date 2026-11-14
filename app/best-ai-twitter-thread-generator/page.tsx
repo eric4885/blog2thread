@@ -5,6 +5,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { ThreadGenerator } from "@/components/thread-generator";
 import {
+  AFFILIATE_DISCLOSURE,
   AFFILIATE_LINKS,
   COMPARISON_LINKS,
   getAffiliate
@@ -222,9 +223,8 @@ export default function BestAiThreadGeneratorPage() {
           </table>
         </div>
         <p className="mt-2 text-xs text-ink/50">
-          Features change — verify pricing on each site before you buy. Some
-          links are affiliate ({AFFILIATE_LINKS.map((l) => l.name).join(", ")}
-          ).
+          Features change — verify pricing on each site before you buy.{" "}
+          {AFFILIATE_DISCLOSURE}
         </p>
 
         <section className="prose-guide mt-10">

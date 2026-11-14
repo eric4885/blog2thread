@@ -37,3 +37,8 @@ export const COMPARISON_LINKS = {
 export function getAffiliate(name: string): AffiliateLink | undefined {
   return AFFILIATE_LINKS.find((l) => l.name === name);
 }
+
+/** FTC-style disclosure — use on every surface that shows AFFILIATE_LINKS. */
+export const AFFILIATE_DISCLOSURE =
+  "These are affiliate links — if you buy through them we may earn a commission at no extra cost to you. They are our own accounts (Typefully, Hypefury, Tweet Hunter), so you are not funding a stranger.";
+

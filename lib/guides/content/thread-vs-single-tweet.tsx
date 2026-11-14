@@ -191,6 +191,41 @@ export const guide: GuideEntry = {
           thread earns a bookmark. If you only have energy for one, pick using the
           thread vs single tweet table above — do not half-thread.
         </p>
+
+        <h2>Thread vs single tweet: same blog, attention cost in characters</h2>
+        <p>
+          Here is what thread vs single tweet looks like when you measure surface
+          area, not vibes. Same onboarding-email post as above.
+        </p>
+        <p>
+          <strong>Single tweet (~238 characters, under the 280 cap):</strong>
+        </p>
+        <blockquote>
+          We cut support tickets 40% by rewriting one onboarding email — not the
+          whole sequence. Email #3 was the leak: vague “explore the dashboard”
+          with no next step. Full write-up + template ↓
+        </blockquote>
+        <p>
+          <strong>Same URL as a 9-tweet thread</strong> (approx. characters per
+          post):
+        </p>
+        <ol>
+          <li>~210 — Hook: 40% fewer tickets after one email change, not a redesign.</li>
+          <li>~185 — Tickets clustered three days after signup, not day one.</li>
+          <li>~240 — Old email #3: “explore the dashboard,” zero next step.</li>
+          <li>~195 — New email: one job, one CTA, one deadline for the user.</li>
+          <li>~220 — Why #3 mattered more than the welcome sequence.</li>
+          <li>~175 — What we measured: tickets / cohort / window.</li>
+          <li>~160 — What we would not copy blindly on another product.</li>
+          <li>~190 — The one line from the blog worth quoting alone.</li>
+          <li>~155 — CTA: full post + template for the email rewrite.</li>
+        </ol>
+        <p>
+          Same URL, ~2,400 characters of surface area vs ~240. That is the
+          attention cost the thread vs single tweet table above is trading
+          against — a thread buys proof; a single tweet buys a screenshot and a
+          click.
+        </p>
         <p>
           Another quick check for thread vs single tweet: if a stranger can
           screenshot one line and the idea still lands, stay single. If they need

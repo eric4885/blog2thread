@@ -1,4 +1,4 @@
-import { AFFILIATE_LINKS } from "@/lib/affiliates";
+import { AFFILIATE_DISCLOSURE, AFFILIATE_LINKS } from "@/lib/affiliates";
 
 type Props = {
   /** Public share id when Save & share already ran */
@@ -36,9 +36,7 @@ export function ResultAffiliate({ threadId }: Props) {
           </a>
         ))}
       </div>
-      <p className="mt-3 text-xs leading-5 text-ink/50">
-        Affiliate links: we may earn a commission if you subscribe through them.
-      </p>
+      <p className="mt-3 text-xs leading-5 text-ink/50">{AFFILIATE_DISCLOSURE}</p>
       {threadId ? (
         <p className="mt-2 text-xs text-ink/50">
           Or bookmark your draft:{" "}
