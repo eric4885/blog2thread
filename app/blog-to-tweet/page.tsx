@@ -86,8 +86,8 @@ export default function BlogToTweetPage() {
               p: "One insight, one screenshot, or a teaser. If you need steps and proof in sequence, switch to the thread converter."
             },
             {
-              h: "FAQ",
-              p: "Output is always a single post. For hooks and length guidance on full threads, see our playbooks under Guides."
+              h: "What you edit",
+              p: "Rewrite the first line in your voice. Drop hashtag stacks. Keep one idea — if you need three, you wanted a thread."
             }
           ].map((item) => (
             <div key={item.h} className="rounded-2xl border border-line bg-white/80 p-5">
@@ -95,6 +95,59 @@ export default function BlogToTweetPage() {
               <p className="mt-2 text-sm leading-6 text-ink/70">{item.p}</p>
             </div>
           ))}
+        </section>
+
+        <section className="mt-12 max-w-3xl space-y-4 text-sm leading-6 text-ink/75">
+          <h2 className="text-xl font-semibold text-ink">Example output shape</h2>
+          <p>
+            From a blog about cutting onboarding tickets, a good single tweet
+            looks like:
+          </p>
+          <blockquote className="rounded-xl border border-line bg-white/90 px-4 py-3 text-ink/80">
+            We cut support tickets 40% by rewriting one onboarding email — not the
+            whole sequence. Email #3 was the leak. Notes ↓
+          </blockquote>
+          <p>
+            That is one post. A thread would show the old email, the new
+            structure, and the measurement window — use{" "}
+            <Link
+              href="/blog-to-twitter-thread/"
+              className="font-semibold text-brand hover:underline"
+            >
+              Blog to Twitter Thread
+            </Link>{" "}
+            for that.
+          </p>
+
+          <h2 className="pt-4 text-xl font-semibold text-ink">FAQ</h2>
+          <h3 className="font-semibold text-ink">
+            Can the tweet go over 280 characters?
+          </h3>
+          <p>
+            No — the converter targets a single post under the limit. If the draft
+            feels cramped, you probably need a thread, not a longer tweet.
+          </p>
+          <h3 className="font-semibold text-ink">
+            Can I generate multiple versions at once?
+          </h3>
+          <p>
+            Run it again with a tighter paste (just the key paragraph) or change
+            the angle by hand. There is no multi-variant batch on this free path.
+          </p>
+          <h3 className="font-semibold text-ink">
+            Is this the same as the homepage thread tool?
+          </h3>
+          <p>
+            No. Homepage / Blog to Twitter Thread = multi-tweet. This page = one
+            tweet. See{" "}
+            <Link
+              href="/guides/thread-vs-single-tweet/"
+              className="font-semibold text-brand hover:underline"
+            >
+              thread vs single tweet
+            </Link>
+            .
+          </p>
         </section>
 
         <section className="mt-12 rounded-2xl border border-line bg-brand-soft/50 p-6">

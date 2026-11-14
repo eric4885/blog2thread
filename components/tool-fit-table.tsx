@@ -91,6 +91,12 @@ export function ToolFitTable() {
         </Link>
         .
       </p>
+      <p className="mt-2 text-xs leading-5 text-ink/55">
+        Some links above are affiliate links (Typefully, Hypefury, Tweet Hunter).
+        If you buy through them, we may earn a commission at no extra cost to
+        you. We only recommend tools we would use for scheduling or recycling
+        after a draft exists.
+      </p>
     </section>
   );
 }

@@ -81,6 +81,53 @@ export default function BlogToTwitterThreadPage() {
               Copy / export, then post with X&apos;s Add another post control.
             </li>
           </ul>
+
+          <h2 className="pt-2 text-xl font-semibold text-ink">
+            Example thread shape
+          </h2>
+          <p>
+            From the same “onboarding email #3” blog, a thread outline looks
+            like: result hook → old email → new structure → why #3 → metric →
+            caveat → CTA. That is usually 7–10 tweets — not one line. If you only
+            want the hook line, switch to{" "}
+            <Link
+              href="/blog-to-tweet/"
+              className="font-semibold text-brand hover:underline"
+            >
+              Blog to Tweet
+            </Link>
+            .
+          </p>
+
+          <h2 className="pt-2 text-xl font-semibold text-ink">FAQ</h2>
+          <h3 className="font-semibold text-ink">
+            Will every tweet stay under 280 characters?
+          </h3>
+          <p>
+            Drafts target the limit, but always skim on mobile before you post.
+            Split or shorten any line that wraps into a wall.
+          </p>
+          <h3 className="font-semibold text-ink">
+            Can I get several thread variants in one click?
+          </h3>
+          <p>
+            Not on the free path. Generate once, then use Try another angle /
+            edit by hand — or paste a tighter section of the article.
+          </p>
+          <h3 className="font-semibold text-ink">
+            How is this different from Blog to Tweet?
+          </h3>
+          <p>
+            This page = full thread. Blog to Tweet = one post. Decision guide:{" "}
+            <Link
+              href="/guides/thread-vs-single-tweet/"
+              className="font-semibold text-brand hover:underline"
+            >
+              thread vs single tweet
+            </Link>
+            .
+          </p>
+
           <p>
             Length and posting tips:{" "}
             <Link

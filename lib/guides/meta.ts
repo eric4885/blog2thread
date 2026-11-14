@@ -48,7 +48,7 @@ export const guideMetas: GuideMeta[] = [
     slug: "thread-vs-single-tweet",
     title: "Thread vs Single Tweet",
     description:
-      "Thread vs single tweet decision table for founders and marketers — when one post is enough, when you need a full X thread, with examples."
+      "Thread vs single tweet: when one X post is enough vs a full thread — decision table and same-blog examples."
   },
   {
     slug: "edit-ai-thread-before-you-post",

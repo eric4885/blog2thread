@@ -358,6 +358,16 @@ export default async function HomePage() {
                 href: "/guides/edit-ai-thread-before-you-post/",
                 label: "Edit an AI thread before you post",
                 blurb: "Five-minute pass after any generator."
+              },
+              {
+                href: "/guides/build-in-public-thread-playbook/",
+                label: "Build-in-public thread playbook",
+                blurb: "What to share after you ship — and what to skip."
+              },
+              {
+                href: "/guides/twitter-thread-cta-that-gets-clicks/",
+                label: "Thread CTAs that get clicks",
+                blurb: "Close for traffic, follows, or replies."
               }
             ].map((item) => (
               <li key={item.href}>

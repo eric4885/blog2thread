@@ -176,6 +176,70 @@ export const guide: GuideEntry = {
           not smart. White space is part of the format.
         </p>
 
+        <h2>Content-type length examples</h2>
+        <p>
+          Same “how many tweets” question changes by what you are shipping:
+        </p>
+        <ul>
+          <li>
+            <strong>Product changelog:</strong> 6–8 tweets. What shipped, who it
+            is for, one screenshot-worthy detail, CTA. Resist the feature dump.
+          </li>
+          <li>
+            <strong>Case study / results post:</strong> 9–11 tweets. Hook with the
+            number, show the before state, the change, the after, one caveat, CTA.
+          </li>
+          <li>
+            <strong>Opinion / industry take:</strong> 7–9 tweets. Claim, two
+            proofs, one counterargument you handle, close. Opinions die when they
+            turn into literature reviews.
+          </li>
+          <li>
+            <strong>Tutorial / how-to:</strong> 8–12 tweets. One step per tweet
+            after the hook. If you have fourteen steps, that is two threads or a
+            blog with a shorter thread teaser.
+          </li>
+          <li>
+            <strong>Newsletter issue mirror:</strong> 7–10 tweets. Steal the spine
+            from the subject line; cut email chrome. See{" "}
+            <Link
+              href="/guides/blog-to-thread-for-newsletter-writers/"
+              className="font-semibold text-brand hover:underline"
+            >
+              newsletter writers playbook
+            </Link>
+            .
+          </li>
+        </ul>
+
+        <h2>AI drafts are usually too long — cut on purpose</h2>
+        <p>
+          Generators pad. They love symmetrical lists (“Additionally…”, “It is
+          also worth noting…”). After you paste a URL into{" "}
+          <Link href="/" className="font-semibold text-brand hover:underline">
+            Blog2Thread
+          </Link>
+          , do this before you post:
+        </p>
+        <ol>
+          <li>Count the tweets. If you are over 12 for a standard blog, mark three for deletion.</li>
+          <li>Delete any tweet that restates the previous one with softer words.</li>
+          <li>Delete SEO openers and “in this thread I will cover…” lines.</li>
+          <li>Rewrite tweet one last — once you know which proof is strongest.</li>
+          <li>Re-check length: you should land in the table above, not above it.</li>
+        </ol>
+        <p>
+          A concrete target: generate 12, ship 9. The three you cut are usually
+          the ones that were killing scroll-through. More on that pass:{" "}
+          <Link
+            href="/guides/edit-ai-thread-before-you-post/"
+            className="font-semibold text-brand hover:underline"
+          >
+            edit an AI thread before you post
+          </Link>
+          .
+        </p>
+
         <h2>FAQ: how many tweets in a thread</h2>
         <h3>How many tweets should a Twitter thread have?</h3>
         <p>
@@ -213,6 +277,16 @@ export const guide: GuideEntry = {
             Twitter thread outline from a blog post
           </Link>
           . The bullet count becomes your tweet count.
+        </p>
+        <h3>Why does my AI thread always feel long?</h3>
+        <p>
+          Models optimize for completeness, not for one spine. Treat the draft as
+          raw clay: delete three tweets, then judge length again.
+        </p>
+        <h3>Should launch threads be shorter than tutorials?</h3>
+        <p>
+          Usually yes — 6–8 tweets. Launches need clarity and a CTA, not a full
+          documentation dump.
         </p>
       </GuideLayout>
     );

@@ -6,7 +6,7 @@ const meta = {
   slug: "thread-vs-single-tweet",
   title: "Thread vs Single Tweet",
   description:
-    "Thread vs single tweet: a decision table for founders and marketers — when one post is enough, when you need a Twitter/X thread, and examples from the same blog."
+    "Thread vs single tweet: when one X post is enough vs a full thread — decision table and same-blog examples."
 };
 
 export const guide: GuideEntry = {
@@ -160,6 +160,37 @@ export const guide: GuideEntry = {
           you might need a second thread later — not a longer first one.
         </p>
 
+        <h2>Same title, two complete drafts</h2>
+        <p>
+          Title on the blog: “We cut support tickets 40% by changing one
+          onboarding email.”
+        </p>
+        <p>
+          <strong>As a single tweet (ready to post):</strong>
+        </p>
+        <blockquote>
+          We cut support tickets 40% by rewriting one onboarding email — not the
+          whole sequence. Email #3 was the leak. Full write-up in the link ↓
+        </blockquote>
+        <p>
+          <strong>As a thread (structure only):</strong>
+        </p>
+        <ol>
+          <li>Hook: 40% fewer tickets after one email change — not a redesign.</li>
+          <li>Context: tickets clustered three days after signup.</li>
+          <li>Old email: vague “explore the dashboard” with no next step.</li>
+          <li>New email: one job, one CTA, one deadline.</li>
+          <li>Why #3 mattered more than the welcome email.</li>
+          <li>What we measured (tickets / cohort / window).</li>
+          <li>What we would not copy blindly.</li>
+          <li>CTA: full post + template.</li>
+        </ol>
+        <p>
+          Same source URL. Different jobs: the tweet earns a click or a reply; the
+          thread earns a bookmark. If you only have energy for one, pick using the
+          decision table above — do not half-thread.
+        </p>
+
         <h2>Common mistakes</h2>
         <ul>
           <li>
@@ -173,6 +204,10 @@ export const guide: GuideEntry = {
           <li>
             <strong>Using a thread generator when you need one tweet</strong> —
             then posting tweet one only. Pick the right tool.
+          </li>
+          <li>
+            <strong>Posting the single tweet and the full thread the same hour</strong> —
+            they cannibalize each other. Space them by a day or more.
           </li>
         </ul>
 
@@ -195,6 +230,23 @@ export const guide: GuideEntry = {
             className="font-semibold text-brand hover:underline"
           >
             how many tweets in a thread
+          </Link>
+          .
+        </p>
+        <h3>What if my blog is mostly one chart?</h3>
+        <p>
+          Lead with a single tweet + the chart. Add a thread later only if people
+          ask “how did you get that number?”
+        </p>
+        <h3>Should founders always thread build-in-public updates?</h3>
+        <p>
+          No. Ship notes often fit one tweet. Save threads for lessons with a
+          clear spine — see{" "}
+          <Link
+            href="/guides/build-in-public-thread-playbook/"
+            className="font-semibold text-brand hover:underline"
+          >
+            build-in-public thread playbook
           </Link>
           .
         </p>
