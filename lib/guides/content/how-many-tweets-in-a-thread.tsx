@@ -229,6 +229,13 @@ export const guide: GuideEntry = {
           <li>Re-check length: you should land in the table above, not above it.</li>
         </ol>
         <p>
+          <strong>Worked example:</strong> a 2,000-word how-to often comes back
+          as 14 tweets. Typical cuts: (a) the soft “context” tweet after the hook,
+          (b) a second “tips” list that repeats step 2, (c) a pre-CTA that only
+          says “almost done.” After those three deletes you are at 11 — inside
+          the standard range — without losing the spine.
+        </p>
+        <p>
           A concrete target: generate 12, ship 9. The three you cut are usually
           the ones that were killing scroll-through. More on that pass:{" "}
           <Link
@@ -238,6 +245,12 @@ export const guide: GuideEntry = {
             edit an AI thread before you post
           </Link>
           .
+        </p>
+        <p>
+          If you are still unsure how many tweets in a thread to keep, print the
+          draft and cross out lines until every remaining tweet fails the delete
+          test (removing it would break the argument). That count is your answer
+          — not a round number from a tip list.
         </p>
 
         <h2>FAQ: how many tweets in a thread</h2>
@@ -287,6 +300,18 @@ export const guide: GuideEntry = {
         <p>
           Usually yes — 6–8 tweets. Launches need clarity and a CTA, not a full
           documentation dump.
+        </p>
+        <h3>What if my source is a 500-word note?</h3>
+        <p>
+          Stay at 5–7 tweets. Stretching a short note to twelve posts is how
+          threads feel padded — better one sharp thread or even a{" "}
+          <Link
+            href="/guides/thread-vs-single-tweet/"
+            className="font-semibold text-brand hover:underline"
+          >
+            single tweet
+          </Link>
+          .
         </p>
       </GuideLayout>
     );

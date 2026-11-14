@@ -31,7 +31,7 @@ export const guide: GuideEntry = {
           }
         ]}
       >
-        <h2>Decision table</h2>
+        <h2>Thread vs single tweet: decision table</h2>
         <div className="not-prose overflow-x-auto rounded-xl border border-line">
           <table className="w-full min-w-[32rem] text-left text-sm">
             <thead className="bg-slate-50 text-ink/70">
@@ -124,7 +124,7 @@ export const guide: GuideEntry = {
           .
         </p>
 
-        <h2>Same blog, two formats</h2>
+        <h2>Thread vs single tweet from the same blog</h2>
         <p>
           Blog topic: “How we cut churn 18% by fixing onboarding email #3.”
         </p>
@@ -160,10 +160,11 @@ export const guide: GuideEntry = {
           you might need a second thread later — not a longer first one.
         </p>
 
-        <h2>Same title, two complete drafts</h2>
+        <h2>Thread vs single tweet: same title, two complete drafts</h2>
         <p>
           Title on the blog: “We cut support tickets 40% by changing one
-          onboarding email.”
+          onboarding email.” Choosing thread vs single tweet starts here — same
+          URL, different jobs.
         </p>
         <p>
           <strong>As a single tweet (ready to post):</strong>
@@ -188,7 +189,31 @@ export const guide: GuideEntry = {
         <p>
           Same source URL. Different jobs: the tweet earns a click or a reply; the
           thread earns a bookmark. If you only have energy for one, pick using the
-          decision table above — do not half-thread.
+          thread vs single tweet table above — do not half-thread.
+        </p>
+        <p>
+          Another quick check for thread vs single tweet: if a stranger can
+          screenshot one line and the idea still lands, stay single. If they need
+          the next two posts to believe you, write the thread. Founders often
+          default to threads for every ship note; most ship notes are single-tweet
+          material, and the thread should wait for the lesson with a clear spine.
+        </p>
+        <p>
+          Tooling follows the same split:{" "}
+          <Link
+            href="/blog-to-tweet/"
+            className="font-semibold text-brand hover:underline"
+          >
+            Blog to Tweet
+          </Link>{" "}
+          for the one-liner path,{" "}
+          <Link
+            href="/blog-to-twitter-thread/"
+            className="font-semibold text-brand hover:underline"
+          >
+            Blog to Twitter Thread
+          </Link>{" "}
+          when the decision table already pointed to a multi-tweet argument.
         </p>
 
         <h2>Common mistakes</h2>
@@ -211,7 +236,7 @@ export const guide: GuideEntry = {
           </li>
         </ul>
 
-        <h2>FAQ</h2>
+        <h2>FAQ: thread vs single tweet</h2>
         <h3>Is a Twitter thread always better than a single tweet?</h3>
         <p>
           No. Threads win when sequence adds proof. Single tweets win when the
