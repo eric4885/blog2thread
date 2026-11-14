@@ -309,6 +309,80 @@ export default async function HomePage() {
           </div>
         </section>
 
+        <section className="mt-14">
+          <h2 className="font-display text-2xl font-semibold text-ink">
+            Thread playbooks
+          </h2>
+          <p className="mt-3 max-w-3xl text-sm leading-6 text-ink/70 md:text-base">
+            Short guides for people who already write blogs or newsletters and
+            need X distribution that does not sound like a template.
+          </p>
+          <ul className="mt-5 grid gap-3 md:grid-cols-2">
+            {[
+              {
+                href: "/guides/how-to-make-a-thread-on-twitter/",
+                label: "How to make a thread on Twitter",
+                blurb: "Spine → hook → post — the full walkthrough."
+              },
+              {
+                href: "/guides/how-many-tweets-in-a-thread/",
+                label: "How many tweets in a thread?",
+                blurb: "7–12 for most blogs, with a length table."
+              },
+              {
+                href: "/guides/thread-vs-single-tweet/",
+                label: "Thread vs single tweet",
+                blurb: "When one post is enough — and when it is not."
+              },
+              {
+                href: "/guides/twitter-thread-hooks-that-work/",
+                label: "Twitter thread hooks that work",
+                blurb: "Weak vs strong opens for bloggers."
+              },
+              {
+                href: "/guides/repurpose-one-blog-post-for-x/",
+                label: "Repurpose one blog post for X",
+                blurb: "A week of posts from one article."
+              },
+              {
+                href: "/guides/twitter-thread-outline-from-blog-post/",
+                label: "Thread outline from a blog post",
+                blurb: "Template before you draft or generate."
+              },
+              {
+                href: "/guides/blog-to-thread-for-newsletter-writers/",
+                label: "Blog to thread for newsletter writers",
+                blurb: "Turn an issue into a native X thread."
+              },
+              {
+                href: "/guides/edit-ai-thread-before-you-post/",
+                label: "Edit an AI thread before you post",
+                blurb: "Five-minute pass after any generator."
+              }
+            ].map((item) => (
+              <li key={item.href}>
+                <Link
+                  href={item.href}
+                  className="block rounded-2xl border border-line bg-white/90 p-4 transition hover:border-brand/40 hover:bg-brand-soft/30"
+                >
+                  <span className="font-semibold text-ink">{item.label}</span>
+                  <span className="mt-1 block text-sm leading-6 text-ink/65">
+                    {item.blurb}
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-4 text-sm text-ink/65">
+            <Link
+              href="/guides/"
+              className="font-semibold text-brand hover:underline"
+            >
+              All thread playbooks →
+            </Link>
+          </p>
+        </section>
+
         <section className="mt-14 rounded-2xl border border-line bg-brand-soft/60 p-6 md:p-8">
           <h2 className="font-display text-2xl font-semibold text-ink">
             Why Use Blog2Thread?

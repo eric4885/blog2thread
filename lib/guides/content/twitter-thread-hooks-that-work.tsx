@@ -16,6 +16,20 @@ export const guide: GuideEntry = {
       <GuideLayout
         guide={meta}
         intro="Most threads die on tweet one. Not because the ideas are bad — because the opening sounds like a syllabus. These are the patterns that work when you are turning a blog or newsletter into an X thread — with weak vs strong lines you can steal the structure from, not the words."
+        related={[
+          {
+            href: "/guides/how-to-make-a-thread-on-twitter/",
+            label: "How to make a thread on Twitter"
+          },
+          {
+            href: "/guides/twitter-thread-outline-from-blog-post/",
+            label: "Outline before you write the hook"
+          },
+          {
+            href: "/guides/edit-ai-thread-before-you-post/",
+            label: "Edit AI tweet one before you post"
+          }
+        ]}
       >
         <h2>Rule zero: tweet one is not your blog title</h2>
         <p>

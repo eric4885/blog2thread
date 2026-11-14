@@ -5,18 +5,22 @@ import { ThreadGenerator } from "@/components/thread-generator";
 import { CURRENT_YEAR } from "@/lib/site";
 import type { GuideMeta } from "@/lib/guides/types";
 
+type RelatedLink = { href: string; label: string };
+
 type Props = {
   guide: GuideMeta;
   intro: string;
   children: React.ReactNode;
   showGenerator?: boolean;
+  related?: RelatedLink[];
 };
 
 export function GuideLayout({
   guide,
   intro,
   children,
-  showGenerator = true
+  showGenerator = true,
+  related
 }: Props) {
   const jsonLd = guide.howToSteps?.length
     ? {
@@ -78,6 +82,26 @@ export function GuideLayout({
                 />
               </div>
             </div>
+          ) : null}
+
+          {related && related.length > 0 ? (
+            <section className="mt-10 rounded-2xl border border-line bg-white/80 p-5">
+              <h2 className="!mt-0 text-lg font-semibold text-ink">
+                Related reading
+              </h2>
+              <ul className="mt-3 space-y-2 text-sm leading-6 text-ink/75">
+                {related.map((item) => (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      className="font-semibold text-brand hover:underline"
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </section>
           ) : null}
 
           <hr className="my-10 border-line" />

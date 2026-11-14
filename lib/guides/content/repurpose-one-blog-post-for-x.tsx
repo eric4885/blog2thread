@@ -34,6 +34,20 @@ export const guide: GuideEntry = {
       <GuideLayout
         guide={meta}
         intro="You already wrote the hard part. The blog exists. The mistake is treating distribution as one copy-paste job. Here is a week-long plan that reuses the same source without spamming your timeline — plus a before/after so you can see what “repurpose” actually looks like."
+        related={[
+          {
+            href: "/guides/thread-vs-single-tweet/",
+            label: "Thread vs single tweet"
+          },
+          {
+            href: "/guides/blog-to-thread-for-newsletter-writers/",
+            label: "For newsletter writers"
+          },
+          {
+            href: "/guides/how-many-tweets-in-a-thread/",
+            label: "How many tweets in a thread?"
+          }
+        ]}
       >
         <h2>Why this workflow exists</h2>
         <p>

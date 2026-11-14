@@ -6,7 +6,7 @@ const meta = {
   slug: "thread-vs-single-tweet",
   title: "Thread vs Single Tweet",
   description:
-    "Not every blog post needs a thread. A simple decision guide for founders and marketers — with examples of what belongs in one tweet vs ten."
+    "Thread vs single tweet: a decision table for founders and marketers — when one post is enough, when you need a Twitter/X thread, and examples from the same blog."
 };
 
 export const guide: GuideEntry = {
@@ -15,8 +15,72 @@ export const guide: GuideEntry = {
     return (
       <GuideLayout
         guide={meta}
-        intro="Threads are not automatically better than single tweets. They cost more attention. Use them when the idea needs sequential proof — not because you published a long blog."
+        intro="Threads are not automatically better than single tweets. They cost more attention. Use a thread when the idea needs sequential proof — not because you published a long blog. Use one tweet when the idea fits in a screenshot."
+        related={[
+          {
+            href: "/guides/how-many-tweets-in-a-thread/",
+            label: "How many tweets in a thread?"
+          },
+          {
+            href: "/blog-to-tweet/",
+            label: "Blog to Tweet — one post tool"
+          },
+          {
+            href: "/guides/how-to-make-a-thread-on-twitter/",
+            label: "How to make a thread when you need one"
+          }
+        ]}
       >
+        <h2>Decision table</h2>
+        <div className="not-prose overflow-x-auto rounded-xl border border-line">
+          <table className="w-full min-w-[32rem] text-left text-sm">
+            <thead className="bg-slate-50 text-ink/70">
+              <tr>
+                <th className="px-3 py-2 font-semibold">Situation</th>
+                <th className="px-3 py-2 font-semibold">Use</th>
+                <th className="px-3 py-2 font-semibold">Why</th>
+              </tr>
+            </thead>
+            <tbody className="text-ink/80">
+              <tr className="border-t border-line">
+                <td className="px-3 py-2">One insight, no setup needed</td>
+                <td className="px-3 py-2">Single tweet</td>
+                <td className="px-3 py-2">Attention cost stays low</td>
+              </tr>
+              <tr className="border-t border-line">
+                <td className="px-3 py-2">Teasing a launch / link drop</td>
+                <td className="px-3 py-2">Single tweet</td>
+                <td className="px-3 py-2">Goal is clicks or replies, not a lesson</td>
+              </tr>
+              <tr className="border-t border-line">
+                <td className="px-3 py-2">One screenshot or one stat</td>
+                <td className="px-3 py-2">Single tweet</td>
+                <td className="px-3 py-2">The media carries the story</td>
+              </tr>
+              <tr className="border-t border-line">
+                <td className="px-3 py-2">3+ steps to make the claim believable</td>
+                <td className="px-3 py-2">Thread</td>
+                <td className="px-3 py-2">Readers need sequence</td>
+              </tr>
+              <tr className="border-t border-line">
+                <td className="px-3 py-2">Before → after with evidence in between</td>
+                <td className="px-3 py-2">Thread</td>
+                <td className="px-3 py-2">Middle tweets are the proof</td>
+              </tr>
+              <tr className="border-t border-line">
+                <td className="px-3 py-2">Teaching a framework (1 / 2 / 3)</td>
+                <td className="px-3 py-2">Thread</td>
+                <td className="px-3 py-2">One idea per post keeps it scannable</td>
+              </tr>
+              <tr className="border-t border-line">
+                <td className="px-3 py-2">Blog has two different claims</td>
+                <td className="px-3 py-2">Two threads (or tweet + thread)</td>
+                <td className="px-3 py-2">Do not smash two spines into one</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
         <h2>Default to one tweet when…</h2>
         <ul>
           <li>One insight stands alone without setup.</li>
@@ -25,11 +89,15 @@ export const guide: GuideEntry = {
           <li>You only have one screenshot or one stat worth sharing.</li>
         </ul>
         <p>
-          Try the{" "}
-          <Link href="/blog-to-tweet/" className="font-semibold text-brand hover:underline">
-            blog-to-tweet
+          Use{" "}
+          <Link
+            href="/blog-to-tweet/"
+            className="font-semibold text-brand hover:underline"
+          >
+            Blog to Tweet
           </Link>{" "}
-          flow when you need a single punchy post from a longer source.
+          when you want a single punchy post from a longer source — not a
+          multi-tweet draft.
         </p>
 
         <h2>Reach for a thread when…</h2>
@@ -37,42 +105,96 @@ export const guide: GuideEntry = {
           <li>You need 3+ steps to make the claim believable.</li>
           <li>You are telling a before/after story with evidence in the middle.</li>
           <li>You are teaching a framework (step 1, step 2, step 3).</li>
-          <li>The blog has one spine, but the tweet version needs room to breathe.</li>
+          <li>
+            The blog has one spine, but a single tweet would feel incomplete.
+          </li>
         </ul>
+        <p>
+          Full converter for multi-tweet output:{" "}
+          <Link
+            href="/blog-to-twitter-thread/"
+            className="font-semibold text-brand hover:underline"
+          >
+            blog to Twitter thread
+          </Link>{" "}
+          or the homepage{" "}
+          <Link href="/" className="font-semibold text-brand hover:underline">
+            Twitter Thread Generator
+          </Link>
+          .
+        </p>
 
-        <h2>Examples from the same blog</h2>
+        <h2>Same blog, two formats</h2>
         <p>
           Blog topic: “How we cut churn 18% by fixing onboarding email #3.”
         </p>
         <ul>
           <li>
             <strong>Single tweet:</strong> “We cut churn 18% by rewriting one
-            onboarding email. Not the welcome sequence — email #3. Thread on
-            what changed ↓” (works if you thread next day)
+            onboarding email — not the welcome sequence, email #3. Notes ↓”
+            (link or follow-up thread the next day)
           </li>
           <li>
-            <strong>Thread:</strong> Hook with the result → show the old email →
-            show the new structure → explain why #3 mattered more than #1 → CTA
+            <strong>Thread:</strong> Hook with the result → old email → new
+            structure → why #3 mattered more than #1 → CTA to the full post
           </li>
         </ul>
+        <p>
+          Weekly pattern that works: thread on Monday (full argument), single
+          tweet on Thursday (best standalone line). Same source, different jobs —
+          see{" "}
+          <Link
+            href="/guides/repurpose-one-blog-post-for-x/"
+            className="font-semibold text-brand hover:underline"
+          >
+            repurpose one blog post for X
+          </Link>
+          .
+        </p>
 
         <h2>The “would this work as a screenshot?” test</h2>
         <p>
           If the whole idea fits in a screenshot someone would share without
           context, it might be a single tweet. If someone would ask “but how?”,
-          it is probably a thread.
+          it is probably a thread. If they would ask “and also what about Y?”,
+          you might need a second thread later — not a longer first one.
         </p>
 
-        <h2>Pair both from one blog</h2>
+        <h2>Common mistakes</h2>
+        <ul>
+          <li>
+            <strong>Threading every blog by default</strong> — burns audience
+            attention for ideas that fit in one line.
+          </li>
+          <li>
+            <strong>Single tweet that promises a thread</strong> but never
+            delivers the proof.
+          </li>
+          <li>
+            <strong>Using a thread generator when you need one tweet</strong> —
+            then posting tweet one only. Pick the right tool.
+          </li>
+        </ul>
+
+        <h2>FAQ</h2>
+        <h3>Is a Twitter thread always better than a single tweet?</h3>
         <p>
-          Common weekly pattern: thread on Monday (full argument), single tweet
-          on Thursday (best standalone line). Same source, different jobs. When
-          you do need the full multi-tweet path, use{" "}
+          No. Threads win when sequence adds proof. Single tweets win when the
+          idea is already complete.
+        </p>
+        <h3>Can I post both from one article?</h3>
+        <p>
+          Yes — thread for the argument, later a standalone line for reach. Do
+          not post both the same hour.
+        </p>
+        <h3>How long should the thread be if I choose that path?</h3>
+        <p>
+          Usually 7–12 tweets. Details:{" "}
           <Link
-            href="/guides/how-to-make-a-thread-on-twitter/"
+            href="/guides/how-many-tweets-in-a-thread/"
             className="font-semibold text-brand hover:underline"
           >
-            how to make a thread on Twitter
+            how many tweets in a thread
           </Link>
           .
         </p>

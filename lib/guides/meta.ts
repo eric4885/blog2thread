@@ -42,13 +42,13 @@ export const guideMetas: GuideMeta[] = [
     slug: "how-many-tweets-in-a-thread",
     title: "How Many Tweets in a Thread?",
     description:
-      "Short answer: fewer than you think. When to stop at 7, when to go to 12, and when to split into two threads."
+      "How many tweets in a Twitter/X thread? Default 7–12 for most blogs — length table, real breakdowns, and a too-long / too-short checklist."
   },
   {
     slug: "thread-vs-single-tweet",
     title: "Thread vs Single Tweet",
     description:
-      "Not every blog post needs a thread. A simple decision guide for founders and marketers — with examples of what belongs in one tweet vs ten."
+      "Thread vs single tweet decision table for founders and marketers — when one post is enough, when you need a full X thread, with examples."
   },
   {
     slug: "edit-ai-thread-before-you-post",

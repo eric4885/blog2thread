@@ -44,6 +44,20 @@ export const guide: GuideEntry = {
       <GuideLayout
         guide={meta}
         intro="If you searched how to make a thread on Twitter (or how to create, write, or post one on X), this is the full workflow — from spine to publish. Threads still reward depth on-platform when you structure them like an argument, not a chopped-up essay."
+        related={[
+          {
+            href: "/guides/how-many-tweets-in-a-thread/",
+            label: "How many tweets in a thread?"
+          },
+          {
+            href: "/guides/twitter-thread-hooks-that-work/",
+            label: "Twitter thread hooks that work"
+          },
+          {
+            href: "/guides/thread-vs-single-tweet/",
+            label: "Thread vs single tweet"
+          }
+        ]}
       >
         <h2>What counts as a Twitter thread</h2>
         <p>
@@ -138,17 +152,30 @@ export const guide: GuideEntry = {
         <h2>Step 6: How to post a Twitter thread on X</h2>
         <p>
           Writing the copy is only half of &quot;how to create a thread on
-          Twitter.&quot; Publishing in the app:
+          Twitter&quot; / &quot;how to post a thread on Twitter.&quot; Publishing
+          in the app (desktop or mobile web):
         </p>
         <ol>
           <li>Open Compose and paste or type tweet 1 (your hook).</li>
           <li>
             Use <strong>Add another post</strong> / the + control to attach tweet
-            2, 3, and so on in order.
+            2, 3, and so on in order — do not post tweet 1 alone first.
           </li>
-          <li>Preview on mobile if you can — line breaks look different there.</li>
+          <li>
+            Check the character count on each post; fix line breaks that look fine
+            on desktop but wrap badly on a phone.
+          </li>
+          <li>Preview on mobile if you can.</li>
           <li>Publish the whole thread in one go (not as separate lone tweets).</li>
+          <li>
+            Optional: reply under tweet 1 with the full blog URL if you kept the
+            last tweet CTA soft.
+          </li>
         </ol>
+        <p>
+          Common fail: posting each tweet as a new root post. That is not a
+          thread — followers see a pile of unrelated updates.
+        </p>
         <p>
           Not every idea needs a thread. If one screenshot would carry the whole
           point, use a{" "}
@@ -283,6 +310,23 @@ export const guide: GuideEntry = {
             thread outline from a blog post
           </Link>
           , then draft.
+        </p>
+        <h3>How do I post a thread on Twitter without breaking the chain?</h3>
+        <p>
+          Use Add another post inside the same Compose window, then publish once.
+          If you already posted tweet 1 alone, reply to yourself for the rest —
+          slower, but it still forms a thread.
+        </p>
+        <h3>How many tweets should I aim for?</h3>
+        <p>
+          Usually 7–12 for a standard blog. See{" "}
+          <Link
+            href="/guides/how-many-tweets-in-a-thread/"
+            className="font-semibold text-brand hover:underline"
+          >
+            how many tweets in a thread
+          </Link>
+          .
         </p>
 
         <ToolFitTable />
