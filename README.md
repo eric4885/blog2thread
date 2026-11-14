@@ -1,11 +1,24 @@
-# Blog2Thread.com
+# Blog2Thread
 
-Free AI Twitter/X thread generator — turn blog posts into ready-to-post threads.
+Free AI **Twitter / X thread generator** — paste a blog URL or text, get a ready-to-post thread.
 
-**Live site:** [https://blog2thread.com](https://blog2thread.com)
+→ **Try it free:** [https://blog2thread.com](https://blog2thread.com)
 
-Also useful:
+No login for drafts. Copy, Markdown, or PDF when you are ready to publish.
 
+## What it does
+
+| Input | Output |
+|------|--------|
+| Blog URL or pasted article | Numbered X thread |
+| Topic / angle | Fresh thread draft |
+| Same source, single-tweet mode | One post under 280 chars |
+
+Useful pages:
+
+- [Live generator](https://blog2thread.com)
+- [Blog → Twitter thread](https://blog2thread.com/blog-to-twitter-thread/)
+- [Blog → single tweet](https://blog2thread.com/blog-to-tweet/)
 - [Best AI thread generators compared](https://blog2thread.com/best-ai-twitter-thread-generator/)
 - [How to make a thread on Twitter/X](https://blog2thread.com/guides/how-to-make-a-thread-on-twitter/)
 
@@ -15,7 +28,7 @@ Also useful:
 
 - Next.js 15 (App Router)
 - TypeScript + Tailwind CSS
-- OpenAI-compatible API via APIMart
+- OpenAI-compatible API (APIMart)
 - Cloudflare Workers via `@opennextjs/cloudflare`
 
 ## Setup
@@ -83,4 +96,8 @@ Do **not** set `HTTPS_PROXY` on Cloudflare (local-only).
 | `/blog-to-twitter-thread` | Brand exact-match page |
 | `/best-ai-twitter-thread-generator` | Comparison hub |
 | `/tools/thread-to-pdf` | PDF/Markdown export |
-| `/guides/how-to-make-a-thread-on-twitter` | SEO guide |
+| `/guides/*` | SEO playbooks (how-to, length, thread vs single, …) |
+
+## License
+
+Source in this repo is provided as-is for the Blog2Thread product. See the live site for the product terms.
