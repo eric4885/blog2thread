@@ -6,7 +6,6 @@ import { SiteHeader } from "@/components/site-header";
 import { ThreadGenerator } from "@/components/thread-generator";
 import {
   AFFILIATE_DISCLOSURE,
-  AFFILIATE_LINKS,
   COMPARISON_LINKS,
   getAffiliate
 } from "@/lib/affiliates";
