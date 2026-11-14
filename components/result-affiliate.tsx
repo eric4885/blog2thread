@@ -36,8 +36,11 @@ export function ResultAffiliate({ threadId }: Props) {
           </a>
         ))}
       </div>
+      <p className="mt-3 text-xs leading-5 text-ink/50">
+        Affiliate links: we may earn a commission if you subscribe through them.
+      </p>
       {threadId ? (
-        <p className="mt-3 text-xs text-ink/50">
+        <p className="mt-2 text-xs text-ink/50">
           Or bookmark your draft:{" "}
           <code className="text-ink/70">/thread/{threadId}/</code>
         </p>
