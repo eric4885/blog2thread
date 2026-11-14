@@ -4,6 +4,8 @@ Free AI **Twitter / X thread generator** — paste a blog URL or text, get a rea
 
 → **Try it free:** [https://blog2thread.com](https://blog2thread.com)
 
+![Blog2Thread — ready-to-post X thread from a blog](docs/blog2thread-product.png)
+
 No login for drafts. Copy, Markdown, or PDF when you are ready to publish.
 
 ## What it does
@@ -100,4 +102,4 @@ Do **not** set `HTTPS_PROXY` on Cloudflare (local-only).
 
 ## License
 
-Source in this repo is provided as-is for the Blog2Thread product. See the live site for the product terms.
+Source-available for personal learning and evaluation. Redistribution and competing hosted use are not allowed — see [LICENSE](LICENSE).

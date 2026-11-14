@@ -20,6 +20,11 @@ const resourceLinks = [
 const legalLinks = [
   { href: "/privacy/", label: "Privacy Policy" },
   { href: "/terms/", label: "Terms of Service" },
+  {
+    href: "https://github.com/eric4885/blog2thread",
+    label: "GitHub",
+    external: true
+  },
   { href: "mailto:hello@blog2thread.com", label: "Contact" }
 ] as const;
 
@@ -80,9 +85,20 @@ export function SiteFooter() {
             <ul className="mt-4 space-y-2 text-sm text-ink/65">
               {legalLinks.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="hover:text-brand">
-                    {link.label}
-                  </Link>
+                  {"external" in link && link.external ? (
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-brand"
+                    >
+                      {link.label}
+                    </a>
+                  ) : (
+                    <Link href={link.href} className="hover:text-brand">
+                      {link.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
