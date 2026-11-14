@@ -105,7 +105,7 @@ export default function BestAiThreadGeneratorPage() {
           Comparison · {CURRENT_YEAR}
         </p>
         <h1 className="mt-3 font-display text-4xl font-semibold tracking-tight text-ink md:text-5xl">
-          Best AI Twitter/X Thread Generators Compared ({CURRENT_YEAR})
+          {`Best AI Twitter/X Thread Generators Compared (${CURRENT_YEAR})`}
         </h1>
         <p className="mt-5 text-base leading-7 text-ink/75">
           Free, paid, and no-login options for turning blogs into threads. This

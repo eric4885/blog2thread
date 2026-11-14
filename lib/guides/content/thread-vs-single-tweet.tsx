@@ -163,7 +163,7 @@ export const guide: GuideEntry = {
         <h2>Thread vs single tweet: same title, two complete drafts</h2>
         <p>
           Title on the blog: “We cut support tickets 40% by changing one
-          onboarding email.” Choosing thread vs single tweet starts here — same
+          onboarding email.” Choosing between the two formats starts here — same
           URL, different jobs.
         </p>
         <p>
@@ -189,7 +189,7 @@ export const guide: GuideEntry = {
         <p>
           Same source URL. Different jobs: the tweet earns a click or a reply; the
           thread earns a bookmark. If you only have energy for one, pick using the
-          thread vs single tweet table above — do not half-thread.
+          the table above — do not half-thread.
         </p>
 
         <h2>Thread vs single tweet: same blog, attention cost in characters</h2>
@@ -222,16 +222,15 @@ export const guide: GuideEntry = {
         </ol>
         <p>
           Same URL, ~2,400 characters of surface area vs ~240. That is the
-          attention cost the thread vs single tweet table above is trading
-          against — a thread buys proof; a single tweet buys a screenshot and a
-          click.
+          attention cost the table above is trading against — a thread buys
+          proof; a single tweet buys a screenshot and a click.
         </p>
         <p>
-          Another quick check for thread vs single tweet: if a stranger can
-          screenshot one line and the idea still lands, stay single. If they need
-          the next two posts to believe you, write the thread. Founders often
-          default to threads for every ship note; most ship notes are single-tweet
-          material, and the thread should wait for the lesson with a clear spine.
+          Another quick check for the two formats: if a stranger can screenshot
+          one line and the idea still lands, stay single. If they need the next
+          two posts to believe you, write the thread. Founders often default to
+          threads for every ship note; most ship notes are single-tweet material,
+          and the thread should wait for the lesson with a clear spine.
         </p>
         <p>
           Tooling follows the same split:{" "}
